@@ -58,6 +58,26 @@ https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Strict_mode#%EC%9
 
 
 
+### 2.1 보안
+
+- 엄격 모드는 '안전한' 자바스크립트를 더 쉽게 작성할 수 있게 한다.
+
+
+
+#### 2.1.1 this의 값
+
+- `this`로서 함수에 전달된 값은 박싱되지 않는다.
+- 비엄격 모드에서, 함수에서 `this`는 객체 혹은 원시값이다. 원시값은 박싱되며, `undefined` 또는 `null`은 전역 객체 `window`가 된다.
+- 엄격 모드에서는 비용이나 보안을 위하여 정의된 `this`는 박싱되지 않으며 정의되지 않은 `this`는 `undefined`가 된다.
+
+
+
+
+
+
+
+
+
 ## 3. 브라우저 콘솔에서 엄격 모드 사용하기
 
 ```js
