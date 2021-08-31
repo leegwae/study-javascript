@@ -176,10 +176,8 @@ console.log(func2()() === window);		// true
 
 - 함수 B가 호출될 때, B의 `this`는 함수 A의 `this`로 고정된다.
 
-??
-
 ```js
-let foo = () => { 'use strict'; return thisl; }
+let foo = () => { 'use strict'; return this; }
 foo() === window;	// true
 ```
 

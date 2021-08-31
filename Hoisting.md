@@ -1,6 +1,6 @@
 # Hoisting
 
-- **호이스팅(hoisting)**: `var`로 선언된 Javascript 변수가 "끌어올려"지거나, 함수나 statement의 최상단으로 올려지는 것이다. (변수 선언들은 코드가 실행되기 전에 처리하므로, 최상위에 선언한 것과 동일하기 때문이다.)
+- **호이스팅(hoisting)**: `var`로 선언된 Javascript 변수가 "끌어올려"지거나, 함수나 statement의 최상단으로 올려지는 것이다. (변수 선언들은 코드가 실행되기 전에 처리하므로, 최상위에 선언한 것과 동일하기 때문이다.) 전역 범위에 선언된 함수 선언 역시 끌어올려진다.
 - 이때, **끌어올려진 것은 '선언' 뿐이다**.
   - 따라서 선언 이전에 참조한 변수가 `ReferenceError`를 발생시키지 않지만 초기화되지 않은 변수가 가지는 기본값 `undefined`를 반환할 수 있다.
 - 따라서 함수 내의 모든 `var`문은 함수 상단에 두는 것이 좋다.
@@ -44,7 +44,7 @@ var y = 2;
 
 ## 2. 함수 호이스팅
 
-- 함수 선언(function statement)은 곧 함수 정의이므로, 상단으로 끌어올려진다.
+- 함수 호이스팅: 함수 선언(function statement)은 곧 함수 정의이므로, 상단으로 끌어올려진다.
 
 ```javascript
 foo();	// Hello, world
@@ -55,7 +55,7 @@ function foo() {
 }
 ```
 
-- 함수 표현식(function expression)이 할당된 변수는 그 선언만 끌어올려지므로, 함수 선언과 같이 수행되지 않는다.
+- 변수 호이스팅: 함수 표현식(function expression)이 할당된 변수는 그 선언만 끌어올려지므로, 함수 선언과 같이 수행되지 않는다.
 
 ```js
 foo();	// TypeError: fun is not a function
