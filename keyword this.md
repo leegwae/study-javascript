@@ -90,7 +90,7 @@ function foo() { return this; }
 foo() === window;
 ```
 
-- 비엄격 모드에서 `this` 값을 설정하려면 `call` 혹은 `apply` 메서드를 사용한다.
+- 비엄격 모드: `this` 값을 설정하려면 `call` 혹은 `apply` 메서드를 사용한다.
   - 이 메서드들은 `this`로 전달된 값이 객체가 아니면 객체로 변환하기 위해 시도한다(박싱).
     - `null`, `undefined`: 전역 객체
     - 원시값: 래퍼 객체를 이용하여 객체로 변환
@@ -154,6 +154,8 @@ let bar = { func: foo };
 bar.foo() === obj;			// true
 ```
 
+
+
 ```js
 let obj = {
     // 함수 A
@@ -198,8 +200,8 @@ let bar = {
     func: function () { return this; },
 }
 
-foo.func() === window;
-bar.func() === bar;
+foo.func() === window;		// true
+bar.func() === bar;			// true
 ```
 
 
