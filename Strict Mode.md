@@ -52,11 +52,7 @@ export default strict;
 
 
 
-## 2. 엄격 모드가 변경하는 것들(수정중)
-
-https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Strict_mode#%EC%97%84%EA%B2%A9%ED%95%9C_%EB%AA%A8%EB%93%9C_%EB%B3%80%EA%B2%BD
-
-
+## 2. 엄격 모드가 변경하는 것들
 
 ### 2.1 보안
 

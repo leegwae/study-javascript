@@ -55,8 +55,6 @@ let f = new Foo();
 
 
 
-
-
 ## 1. Gobal context
 
 - `this`는 엄격 모드 여부에 관계없이 전역 객체를 참조한다.
