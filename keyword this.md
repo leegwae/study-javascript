@@ -102,10 +102,9 @@ foo.call(obj);	// [object String]
 foo.apply(undefined); // [object global] 
 ```
 
-
-
 - 엄격 모드: `this`의 값이 excution context(실행 문맥)에 진입한다.
   - 아래의 경우에서 `foo()`는 객체의 메서드나 속성으로 호출하지 않고 직접 호출하였으므로 `this`는 `undefined` (Strict Mode.md 참고)
+  - `window.foo()`는 `window` 객체의 메서드로서 호출되었으므로 `this`는 `window`
 
 ```js
 function foo() {
