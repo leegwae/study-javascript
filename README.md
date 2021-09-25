@@ -43,11 +43,14 @@ IDE: Vistual Studio Code
   - [x] 문서 내 링크 참고해서 작성
   - [ ] [shortand notation for method](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Object_initializer#%EB%A9%94%EC%84%9C%EB%93%9C_%EC%A0%95%EC%9D%98)
   - [ ] `...`와 `Object.assign()` 비교(얕은 복사, 깊은 복사 관련하여)
+    - [ ] [참조에 의한 객체 복사](https://ko.javascript.info/object-copy)
 - [ ] [Strict Mode](Stricit Mode.md)
   - [ ] 2 [엄격 모드가 변경하는 것들](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Strict_mode#%EC%97%84%EA%B2%A9%ED%95%9C_%EB%AA%A8%EB%93%9C_%EB%B3%80%EA%B2%BD) 참고해서 보충
   - [ ] 함수 내에서 `this`와 엄격모드
 - [ ] Regular Expression Literal.md 만들기
 - [ ] [얕은 복사, 깊은 복사](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax#spread_in_object_literals)
+  - [ ] https://ko.javascript.info/object-copy
+- [ ] Introduction to ES6
 
 
 
