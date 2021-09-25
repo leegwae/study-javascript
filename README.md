@@ -24,6 +24,7 @@ IDE: Vistual Studio Code
   - [ ] 11.2.4 The generator function declaration
   - [ ] 11.2.5 The generator function expression
   - [ ] 11.2.6 The GeneratorFunction constructor
+  - [ ] 클로저(closure) 분리하기
 - [ ] [12. Objects](12. Objects.md)
   - [ ] 12.4 [getter, setter 정의하기](https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Working_with_Objects#getters_%EC%99%80_setters_%EC%A0%95%EC%9D%98) 보충
 - [ ] [13. Indexed collections](13. Indexed collections.md)
