@@ -10,9 +10,9 @@ IDE: Vistual Studio Code
 
 ## 투두
 
-- [ ] [07. Type Conversion](./07. Type Conversion.md)
-  - [ ] 객체 원시형 변환
-  - [ ] `toString()`
+- [x] [07. Type Conversion](./07. Type Conversion.md)
+  - [x] 객체 원시형 변환
+  - [x] `toString()`
 - [ ] [08. Operator](./08. Operator.md)
   - [ ] 8.5 비트 연산자 보충
   - [ ] 8.9 쉼표 연산자 보충
@@ -52,6 +52,8 @@ IDE: Vistual Studio Code
 - [ ] [얕은 복사, 깊은 복사](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax#spread_in_object_literals)
   - [ ] https://ko.javascript.info/object-copy
 - [ ] Introduction to ES6
+- [ ] Symbol
+  - [ ] 보충
 
 
 
