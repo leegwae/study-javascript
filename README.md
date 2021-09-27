@@ -24,7 +24,8 @@ IDE: Vistual Studio Code
   - [ ] 11.2.4 The generator function declaration
   - [ ] 11.2.5 The generator function expression
   - [ ] 11.2.6 The GeneratorFunction constructor
-  - [ ] 클로저(closure) 분리하기
+  - [x] 클로저(closure) 분리하기
+    - [x] https://ko.javascript.info/closure
 - [ ] [12. Objects](12. Objects.md)
   - [ ] 12.4 [getter, setter 정의하기](https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Working_with_Objects#getters_%EC%99%80_setters_%EC%A0%95%EC%9D%98) 보충
 - [ ] [13. Indexed collections](13. Indexed collections.md)
@@ -54,6 +55,16 @@ IDE: Vistual Studio Code
 - [ ] Introduction to ES6
 - [ ] Symbol
   - [ ] 보충
+- [ ] iterable
+- [ ] object.keys, values, entries
+- [ ] json
+- [ ] garbage collection
+- [ ] 프로토타입과 object....property() 메서드들
+- [ ] 클로저
+  - [ ] [MDN closure](https://developer.mozilla.org/ko/docs/Web/JavaScript/Closures#%EC%8B%A4%EC%9A%A9%EC%A0%81%EC%9D%B8_%ED%81%B4%EB%A1%9C%EC%A0%80) 보충
+  - [ ] [모던 자바스크립트 closure](https://ko.javascript.info/closure#ref-410) 보충
+    - [ ] 환경 객체 변화 과정
+    - [ ] 가비지 컬렉션
 
 
 
