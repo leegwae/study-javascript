@@ -54,7 +54,7 @@ IDE: Vistual Studio Code
   - [ ] https://ko.javascript.info/object-copy
 - [ ] Introduction to ES6
 - [ ] Symbol
-  - [ ] 보충
+  - [ ] 보충(https://ko.javascript.info/symbol#ref-559)
 - [ ] iterable
 - [ ] object.keys, values, entries
 - [ ] json
