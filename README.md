@@ -28,6 +28,9 @@ IDE: Vistual Studio Code
     - [x] https://ko.javascript.info/closure
 - [ ] [12. Objects](12. Objects.md)
   - [ ] 12.4 [getter, setter 정의하기](https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Working_with_Objects#getters_%EC%99%80_setters_%EC%A0%95%EC%9D%98) 보충
+- [ ] [Objects](./Objects.md): 모르는 메서드나 프로퍼티 볼 때마다 추가하기
+  - [ ] 생성자 메서드
+  - [ ] 프로토타입 메서드
 - [ ] [13. Indexed collections](13. Indexed collections.md)
   - [ ] [배열 메서드](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Indexed_collections#array_methods) 따로 문서 만들기
 - [ ] [14. Keyed collections](14. Keyed collections.md)
