@@ -56,6 +56,8 @@ IDE: Vistual Studio Code
 - [ ] Symbol
   - [ ] 보충(https://ko.javascript.info/symbol#ref-559)
 - [ ] iterable
+  - [ ] https://ko.javascript.info/iterable 예시 보충
+  - [ ] [MDN](https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Iterators_and_Generators#%EC%82%AC%EC%9A%A9%EC%9E%90_%EC%A0%95%EC%9D%98_iterable) 예시 보충
 - [ ] object.keys, values, entries
 - [ ] json
 - [ ] garbage collection
