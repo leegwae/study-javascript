@@ -1,4 +1,4 @@
-# Objects
+# Object
 
 - `Object` 생성자는 전달된 값의 객체 래퍼를 생성한다.
 
