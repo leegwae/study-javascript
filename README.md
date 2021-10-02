@@ -58,7 +58,7 @@ IDE: Vistual Studio Code
 - [ ] Introduction to ES6
 - [ ] Symbol
   - [ ] 보충(https://ko.javascript.info/symbol#ref-559)
-- [ ] iterable
+- [ ] Iterator and Geneartor
   - [ ] https://ko.javascript.info/iterable 예시 보충
   - [ ] [MDN](https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Iterators_and_Generators#%EC%82%AC%EC%9A%A9%EC%9E%90_%EC%A0%95%EC%9D%98_iterable) 예시 보충
 - [ ] object.keys, values, entries
@@ -70,6 +70,7 @@ IDE: Vistual Studio Code
   - [ ] [모던 자바스크립트 closure](https://ko.javascript.info/closure#ref-410) 보충
     - [ ] 환경 객체 변화 과정
     - [ ] 가비지 컬렉션
+  - [ ] function 생성자 사용했을 때의 렉시컬(https://ko.javascript.info/new-function#ref-158)
 
 
 
