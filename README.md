@@ -71,6 +71,7 @@ IDE: Vistual Studio Code
     - [ ] 환경 객체 변화 과정
     - [ ] 가비지 컬렉션
   - [ ] function 생성자 사용했을 때의 렉시컬(https://ko.javascript.info/new-function#ref-158)
+- [ ] web worker
 
 
 
