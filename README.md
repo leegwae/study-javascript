@@ -72,6 +72,8 @@ IDE: Vistual Studio Code
     - [ ] 가비지 컬렉션
   - [ ] function 생성자 사용했을 때의 렉시컬(https://ko.javascript.info/new-function#ref-158)
 - [ ] web worker
+- [ ] timeoutand intervals 보충
+  - [ ] requestAnimationFrame() [MDN](https://developer.mozilla.org/ko/docs/Learn/JavaScript/Asynchronous/Timeouts_and_intervals)
 
 
 
