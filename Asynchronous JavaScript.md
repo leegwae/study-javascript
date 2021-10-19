@@ -12,3 +12,6 @@
 
 
 
+## Promise
+
+[Promise](./16. Promise.md) 참고

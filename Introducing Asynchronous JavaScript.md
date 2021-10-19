@@ -51,6 +51,15 @@ btn.addEventListener('click', () => {
 
 ## Asynchronous JavaScript
 
+```js
+let response = fetch('이미지.png');
+let blob = reponse.blob();
+// 가져온 이미지 표시하기
+```
+
+- 외부에서 리소스를 가져오는 경우를 생각해보자. 이미지가 다운로드된 후에야 가져온 이미지를 표시할 수 있을 것이다. 그러니 `response`가 반환되기 전까지 기다려야한다. 
+- 위와 같은 이유로 많은 웹 API가 비동기 코드를 사용하여 실행된다.
+- [비동기란 무엇인가](https://github.com/leegwae/TIL/blob/main/web/Asynchronous.md)
 - 자바스크립트에서 비동기 작업은 두 가지 유형으로 처리한다.
   - 콜백
   - 프로미스
@@ -59,7 +68,7 @@ btn.addEventListener('click', () => {
 
 ## Async callbacks
 
-- 비동기 콜백(async callback)은 백그라운드에서 코드를 실행할 함수를 호출할 때 인수로 전달되는 함수이다.
+- **비동기 콜백(async callback)**은 백그라운드에서 코드를 실행할 함수를 호출할 때 인수로 전달되는 함수이다.
 - 백그라운드 코드가 실행을 마치면, 콜백 함수를 호출한다.
 - 콜백을 사용하는 것은 예전 방식이다.
 
@@ -122,6 +131,7 @@ fetch('products.json').then(function(response) {
 - 프로미스는 콜백에 비해 다음과 같은 장점을 가진다.
   - `.then()` 연산을 사용하여 여러 개의 동기 연산을 체이닝할 수 있다.
     - 연산의 결과는 그 다음 `.then()` 연산의 입력이 된다.
+    - 콜백은 콜백을 계속 중첩하여 콜백 지옥을 만들 수도 있음.
   - 프로미스 콜백은 이벤트 큐에 배치된 순대로 엄격히 호출된다.
   - 에러 핸들링이 더 좋다.
     - 모든 에러는 단일한 `.catch()` 블록으로 처리된다.
