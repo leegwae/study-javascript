@@ -74,6 +74,8 @@ IDE: Vistual Studio Code
 - [ ] web worker
 - [ ] timeoutand intervals 보충
   - [ ] requestAnimationFrame() [MDN](https://developer.mozilla.org/ko/docs/Learn/JavaScript/Asynchronous/Timeouts_and_intervals)
+- [ ] [16. Promise](./16. Promise.md)
+- [ ] 콜백 문서 만들기
 
 
 

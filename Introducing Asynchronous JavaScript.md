@@ -94,7 +94,7 @@ btn.addEventListener('click', () => {
 
 ## Promises
 
-- 프로피스는 모던 웹 API에서 사용되는 새로운 스타일의 비동기 코드이다.
+- 프로미스는 모던 웹 API에서 사용되는 새로운 스타일의 비동기 코드이다.
   - `fetch()` API가 좋은 예시로, `XMLHttpRequest` 보다 더 현대적이다.
 
 ```js
@@ -126,7 +126,31 @@ fetch('products.json').then(function(response) {
 
 
 
-### 프로미스와 콜백
+### 프로미스와 콜백의 비교
+
+```javascript
+// 프로미스 체이닝
+A()
+.then(function(param1) {
+    return B(param1);
+})
+.then(function(param2) {
+    return C(param2);
+})
+.then(function(param3) {
+    D(param3);
+})
+.catch(failureCallback);
+
+// 콜백 지옥
+A(function(param1) {
+  B(param1, function(param2) {
+    C(param2, function(param3) {
+      D(param3);
+    }, failureCallback);
+  }, failureCallback);
+}, failureCallback);
+```
 
 - 프로미스는 콜백에 비해 다음과 같은 장점을 가진다.
   - `.then()` 연산을 사용하여 여러 개의 동기 연산을 체이닝할 수 있다.
@@ -143,4 +167,5 @@ fetch('products.json').then(function(response) {
 
 - [MDN 일반적인 비동기 개념](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Concepts)
 - [MDN 비동기 자바스크립트 입문](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Introducing)
+- [MDN 프로미스로 프로그래밍하기](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Promises) 
 
