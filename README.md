@@ -4,11 +4,63 @@
 
 IDE: Vistual Studio Code
 
-(2021/08/24~)
+(2021/08/24~2021/11/02)
+
+(2022/05/29~) 문서 구조 개편 중
 
 
 
-## 투두
+- [01. Introduction](https://github.com/leegwae/study-javascript/blob/main/01.%20Introduction.md): 시작하며
+- [02. Hello world](https://github.com/leegwae/study-javascript/blob/main/02.%20Hello%20world.md): 세미콜론, 주석, 스크립트 작성하기
+- [03. Lexical Grammar](https://github.com/leegwae/study-javascript/blob/main/03.%20Lexical%20Grammar.md): 자바스크립트의 어휘적 분석
+- [04. Variable and Constant](https://github.com/leegwae/study-javascript/blob/main/04.%20Variable%20and%20Constant.md): 식별자, 변수, 상수
+- [05. Data Types](https://github.com/leegwae/study-javascript/blob/main/05.%20Data%20Types.md): 동적 타이핑, 자바스크립트의 데이터 타입
+  - [Symbol](https://github.com/leegwae/study-javascript/blob/main/Symbol.md)
+
+- [06. Literals](https://github.com/leegwae/study-javascript/blob/main/06.%20Literals.md): 리터럴
+  - [Object Initializer](https://github.com/leegwae/study-javascript/blob/main/Object%20initializer.md): 객체 리터럴로 객체 초기화하기
+- [07. Type Conversion](https://github.com/leegwae/study-javascript/blob/main/07.%20Type%20Conversion.md): 자바스크립트의 형 변환
+  - 원시 값을 원시 값 혹은 객체로 변환하기
+  - [Conversion Object to Primitive Value](https://github.com/leegwae/study-javascript/blob/main/Conversion%20Object%20to%20Primitive%20Value.md): 객체를 원시 값으로 변환하기
+- [08. Operator](https://github.com/leegwae/study-javascript/blob/main/08.%20Operator.md): 자바스크립트의 연산자
+  - [Optional Chaning](https://github.com/leegwae/study-javascript/blob/main/Optional%20Chaining.md): 자바스크립트의 옵셔널 체이닝
+- [09. Control flow](https://github.com/leegwae/study-javascript/blob/main/09.%20Control%20flow.md): block statement와 if, switch statement
+- [10. Loop and Iteration](https://github.com/leegwae/study-javascript/blob/main/10.%20Loop%20and%20Iteration.md): for/while statement와 jump statement
+- [11. Functions](https://github.com/leegwae/study-javascript/blob/main/11.%20Functions.md): 자바스크립트의 함수
+  - [Arrow Function](https://github.com/leegwae/study-javascript/blob/main/Arrow%20Function.md): 화살표 함수
+  - [Call by Sharing](https://github.com/leegwae/study-javascript/blob/main/Call%20by%20Sharing.md)
+  - [Closure](https://github.com/leegwae/study-javascript/blob/main/Closure.md): 클로저
+- [12. Objects](https://github.com/leegwae/study-javascript/blob/main/12.%20Objects.md): 자바스크립트의 객체
+  - [Standard Built-in Objects](https://github.com/leegwae/study-javascript/blob/main/Standard%20Built-in%20Objects.md): 표준 내장 객체
+
+- [13. Indexed collections](https://github.com/leegwae/study-javascript/blob/main/13.%20Indexed%20collections.md): 자바스크립트의 배열
+- [14. Keyed collections](https://github.com/leegwae/study-javascript/blob/main/14.%20Keyed%20collections.md): 자바스크립트의 맵과 집합
+- [15. Prototype and Inheritance](https://github.com/leegwae/study-javascript/blob/main/15.%20Prototype%20and%20Inheritance.md): 프로토타입 기반 언어 자바스크립트에서 상속은 어떻게 이루어지는가
+- [비동기 자바스크립트](https://github.com/leegwae/study-javascript/blob/main/Asynchronous%20JavaScript.md)
+  - [Introducing Asynchrnous JavaScript](https://github.com/leegwae/study-javascript/blob/main/Introducing%20Asynchronous%20JavaScript.md): 일반적인 비동기 개념과 비동기를 위한 자바스크립트의 콜백과 프로미스 도입
+  - [Timeouts and intervals](https://github.com/leegwae/study-javascript/blob/main/Timeouts%20and%20intervals.md)
+  - [16. Promise](https://github.com/leegwae/study-javascript/blob/main/16.%20Promise.md): 비동기 연산을 위한 자바스크립트의 프로미스
+  - [async and await](https://github.com/leegwae/study-javascript/blob/main/async%20and%20await.md): ES6의 async, await
+- [Iterator and Generator](https://github.com/leegwae/study-javascript/blob/main/Iterator%20and%20Generator.md)
+- [Destructuring assignment](https://github.com/leegwae/study-javascript/blob/main/Destructuring%20assignment.md)
+- [Hoisting](https://github.com/leegwae/study-javascript/blob/main/Hoisting.md): 자바스크립트의 호이스팅
+- [keyword this](https://github.com/leegwae/study-javascript/blob/main/keyword%20this.md): 키워드 this
+- [Strict Mode](https://github.com/leegwae/study-javascript/blob/main/Strict%20Mode.md): 자바스크립트의 엄격 모드
+- [Function](https://github.com/leegwae/study-javascript/blob/main/Function.md): Function 객체의 명세
+- [Object](https://github.com/leegwae/study-javascript/blob/main/Object.md): Object 객체의 명세
+
+
+
+## TODO
+
+- [ ] [01. Introduction](https://github.com/leegwae/study-javascript/blob/main/01.%20Introduction.md)
+  - [ ] 문서가 무엇에 관한 정보를 담고 있는지 정확하게 서술할 것
+
+- [ ] [02. Hello world](https://github.com/leegwae/study-javascript/blob/main/02.%20Hello%20world.md): 세미콜론, 주석, 스크립트 작성하기
+  - [ ] 다른 문서로 편입하기
+
+- [ ] [03. Lexical Grammar](https://github.com/leegwae/study-javascript/blob/main/03.%20Lexical%20Grammar.md)
+  - [ ] 3.5 토큰 - 키워드, 식별자, 리터럴, 구분자 보충
 
 - [x] [07. Type Conversion](./07. Type Conversion.md)
   - [x] 객체 원시형 변환
@@ -77,6 +129,7 @@ IDE: Vistual Studio Code
 - [ ] [16. Promise](./16. Promise.md)
 - [ ] 콜백 문서 만들기
 - [ ] [async and await](./async and await.md)
+- [ ] 자바스크립트의 예약어 정리
 
 
 
