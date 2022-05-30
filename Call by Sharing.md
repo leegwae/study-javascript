@@ -2,7 +2,7 @@
 
 ```js
 function changeValue(a, b, c) {
-    v = a + 1;
+    a = a + 1;
     b.item = 'changed'
     c = { item: 'changed' };
 }

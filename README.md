@@ -15,7 +15,7 @@ IDE: Vistual Studio Code
 - [03. Lexical Grammar](https://github.com/leegwae/study-javascript/blob/main/03.%20Lexical%20Grammar.md): 자바스크립트의 어휘적 분석
 - [04. Variable and Constant](https://github.com/leegwae/study-javascript/blob/main/04.%20Variable%20and%20Constant.md): 식별자, 변수, 상수
 - [05. Data Types](https://github.com/leegwae/study-javascript/blob/main/05.%20Data%20Types.md): 동적 타이핑, 자바스크립트의 데이터 타입
-  - [Symbol](https://github.com/leegwae/study-javascript/blob/main/Symbol.md)
+  - [Symbol](https://github.com/leegwae/study-javascript/blob/main/Symbol.md): 자바스크립트의 Symbol 객체
 
 - [06. Literals](https://github.com/leegwae/study-javascript/blob/main/06.%20Literals.md): 리터럴
   - [Object Initializer](https://github.com/leegwae/study-javascript/blob/main/Object%20initializer.md): 객체 리터럴로 객체 초기화하기
@@ -36,12 +36,12 @@ IDE: Vistual Studio Code
 - [13. Indexed collections](https://github.com/leegwae/study-javascript/blob/main/13.%20Indexed%20collections.md): 자바스크립트의 배열
 - [14. Keyed collections](https://github.com/leegwae/study-javascript/blob/main/14.%20Keyed%20collections.md): 자바스크립트의 맵과 집합
 - [15. Prototype and Inheritance](https://github.com/leegwae/study-javascript/blob/main/15.%20Prototype%20and%20Inheritance.md): 프로토타입 기반 언어 자바스크립트에서 상속은 어떻게 이루어지는가
-- [비동기 자바스크립트](https://github.com/leegwae/study-javascript/blob/main/Asynchronous%20JavaScript.md)
+- [16. Asynchronous JavaScript](https://github.com/leegwae/study-javascript/blob/main/16.%20Asynchronous%20JavaScript.md)
   - [Introducing Asynchrnous JavaScript](https://github.com/leegwae/study-javascript/blob/main/Introducing%20Asynchronous%20JavaScript.md): 일반적인 비동기 개념과 비동기를 위한 자바스크립트의 콜백과 프로미스 도입
   - [Timeouts and intervals](https://github.com/leegwae/study-javascript/blob/main/Timeouts%20and%20intervals.md)
-  - [16. Promise](https://github.com/leegwae/study-javascript/blob/main/16.%20Promise.md): 비동기 연산을 위한 자바스크립트의 프로미스
+  - [Promise](https://github.com/leegwae/study-javascript/blob/main/Promise.md): 비동기 연산을 위한 자바스크립트의 프로미스
   - [async and await](https://github.com/leegwae/study-javascript/blob/main/async%20and%20await.md): ES6의 async, await
-- [Iterator and Generator](https://github.com/leegwae/study-javascript/blob/main/Iterator%20and%20Generator.md)
+- [17. Iterator and Generator](https://github.com/leegwae/study-javascript/blob/main/17.%20Iterator%20and%20Generator.md)
 - [Destructuring assignment](https://github.com/leegwae/study-javascript/blob/main/Destructuring%20assignment.md)
 - [Hoisting](https://github.com/leegwae/study-javascript/blob/main/Hoisting.md): 자바스크립트의 호이스팅
 - [keyword this](https://github.com/leegwae/study-javascript/blob/main/keyword%20this.md): 키워드 this
@@ -139,3 +139,5 @@ IDE: Vistual Studio Code
 
 - [MDN JavaScript](https://developer.mozilla.org/ko/docs/Web/JavaScript)
 - [ECMA-262](https://262.ecma-international.org/12.0/)
+- 모던 자바스크립트 Deep Dive(이용모 저)
+- [모던 자바스크립트 딥다이브 스터디](https://www.youtube.com/watch?v=3ZP3VPlrr0U&list=PLjQV3hketAJnP_ceUiPCc8GnNQ0REpCqr)

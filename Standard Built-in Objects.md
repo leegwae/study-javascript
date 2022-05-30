@@ -48,7 +48,7 @@
 
 ### 텍스트 처리
 
-- `Strin`
+- `String`
 - `RegExp`
 
 
