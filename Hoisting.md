@@ -4,7 +4,7 @@
 - 이때, **끌어올려진 것은 '선언' 뿐이다**.
   - 따라서 선언 이전에 참조한 변수가 `ReferenceError`를 발생시키지 않지만 초기화되지 않은 변수가 가지는 기본값 `undefined`를 반환할 수 있다.
 - 따라서 함수 내의 모든 `var`문은 함수 상단에 두는 것이 좋다.
-- ECMAScript 2015의 `let`, `const`는 호이스팅하지 않으므로, 선언 이전에 참조한 변수는 `ReferenceError`를 발생시킨다.
+- ECMAScript 2015의 `let`, `const`는 호이스팅되나, `undefined`로 초기화되지 않아 선언 이전에 참조한 변수는 `ReferenceError`를 발생시킨다.
 
 
 
