@@ -13,7 +13,7 @@ IDE: Vistual Studio Code
 
 
 - [01. Introduction](https://github.com/leegwae/study-javascript/blob/main/01.%20Introduction.md): 자바스크립트의 역사와 특징에 대하여
-- [02. Hello world](https://github.com/leegwae/study-javascript/blob/main/02.%20Hello%20world.md): 세미콜론, 주석, 스크립트 작성하기
+- [02. Hello world](https://github.com/leegwae/study-javascript/blob/main/02.%20Hello%20world.md): 자바스크립트 개발 환경과 자바스크립트 실행하기
 - [03. Lexical Grammar](https://github.com/leegwae/study-javascript/blob/main/03.%20Lexical%20Grammar.md): 자바스크립트의 어휘적 분석
 - [04. Variable and Constant](https://github.com/leegwae/study-javascript/blob/main/04.%20Variable%20and%20Constant.md): 식별자, 변수, 상수
 - [05. Data Types](https://github.com/leegwae/study-javascript/blob/main/05.%20Data%20Types.md): 동적 타이핑, 자바스크립트의 데이터 타입
@@ -58,8 +58,8 @@ IDE: Vistual Studio Code
 - [x] [01. Introduction](https://github.com/leegwae/study-javascript/blob/main/01.%20Introduction.md)
   - [x] 문서가 무엇에 관한 정보를 담고 있는지 정확하게 서술할 것
 
-- [ ] [02. Hello world](https://github.com/leegwae/study-javascript/blob/main/02.%20Hello%20world.md): 세미콜론, 주석, 스크립트 작성하기
-  - [ ] 다른 문서로 편입하기
+- [x] [02. Hello world](https://github.com/leegwae/study-javascript/blob/main/02.%20Hello%20world.md)
+  - [x] ~~다른 문서로 편입하기~~ 문서 내용 새롭게 개편
 
 - [ ] [03. Lexical Grammar](https://github.com/leegwae/study-javascript/blob/main/03.%20Lexical%20Grammar.md)
   - [ ] 3.5 토큰 - 키워드, 식별자, 리터럴, 구분자 보충
