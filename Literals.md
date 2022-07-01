@@ -1,4 +1,4 @@
-# literals
+# Literals
 
 JavaScript에서 값을 나타내기 위해 리터럴을 사용한다.
 
