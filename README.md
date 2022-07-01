@@ -2,7 +2,13 @@
 
 자바스크립트 개인 독스
 
-IDE: Vistual Studio Code
+
+
+현재 문서 이름을 바꾸는 중이니, 링크 오류가 난다면 TOC에서 관련 문서를 찾아주세요.
+
+
+
+## History
 
 (2021/08/24~2021/11/02)
 
@@ -12,14 +18,17 @@ IDE: Vistual Studio Code
 
 
 
+## TOC
+
 - [01. Introduction](https://github.com/leegwae/study-javascript/blob/main/01.%20Introduction.md): 자바스크립트의 역사와 특징에 대하여
 - [02. Hello world](https://github.com/leegwae/study-javascript/blob/main/02.%20Hello%20world.md): 자바스크립트 개발 환경과 자바스크립트 실행하기
 - [03. Lexical Grammar](https://github.com/leegwae/study-javascript/blob/main/03.%20Lexical%20Grammar.md): 자바스크립트의 어휘적 분석
 - [04. Variable and Constant](https://github.com/leegwae/study-javascript/blob/main/04.%20Variable%20and%20Constant.md): 식별자, 변수, 상수
+- [Expression and Statement](https://github.com/leegwae/study-javascript/blob/main/Expression%20and%20Statement.md): 표현식과 문
 - [05. Data Types](https://github.com/leegwae/study-javascript/blob/main/05.%20Data%20Types.md): 동적 타이핑, 자바스크립트의 데이터 타입
   - [Symbol](https://github.com/leegwae/study-javascript/blob/main/Symbol.md): 자바스크립트의 Symbol 객체
 
-- [06. Literals](https://github.com/leegwae/study-javascript/blob/main/06.%20Literals.md): 리터럴
+- [06. Literals](https://github.com/leegwae/study-javascript/blob/main/Literals.md): 리터럴의 종류
   - [Object Initializer](https://github.com/leegwae/study-javascript/blob/main/Object%20initializer.md): 객체 리터럴로 객체 초기화하기
 - [07. Type Conversion](https://github.com/leegwae/study-javascript/blob/main/07.%20Type%20Conversion.md): 자바스크립트의 형 변환
   - 원시 값을 원시 값 혹은 객체로 변환하기
@@ -55,6 +64,10 @@ IDE: Vistual Studio Code
 
 ## TODO
 
+- [ ] **제목에서 번호 매긴 거 빼기**
+  
+- [ ] **링크 오류 수정하기**
+  
 - [x] [01. Introduction](https://github.com/leegwae/study-javascript/blob/main/01.%20Introduction.md)
   - [x] 문서가 무엇에 관한 정보를 담고 있는지 정확하게 서술할 것
 
@@ -64,6 +77,11 @@ IDE: Vistual Studio Code
 - [ ] [03. Lexical Grammar](https://github.com/leegwae/study-javascript/blob/main/03.%20Lexical%20Grammar.md)
   - [ ] 3.5 토큰 - 키워드, 식별자, 리터럴, 구분자 보충
 
+- [ ] Literals
+  - [ ] 부동소수점 리터럴 정리하기
+
+  - [ ] 정규표현식 문서 따로 파기
+  
 - [x] [07. Type Conversion](./07. Type Conversion.md)
   - [x] 객체 원시형 변환
   - [x] `toString()`
