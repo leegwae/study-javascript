@@ -4,7 +4,7 @@
 
 
 
-현재 문서 이름을 바꾸는 중이니, 링크 오류가 난다면 TOC에서 관련 문서를 찾아주세요.
+**현재 문서 이름을 바꾸는 중이니, 링크 오류가 난다면 TOC에서 관련 문서를 찾아주세요.**
 
 
 
@@ -22,18 +22,18 @@
 
 - [01. Introduction](https://github.com/leegwae/study-javascript/blob/main/01.%20Introduction.md): 자바스크립트의 역사와 특징에 대하여
 - [02. Hello world](https://github.com/leegwae/study-javascript/blob/main/02.%20Hello%20world.md): 자바스크립트 개발 환경과 자바스크립트 실행하기
-- [03. Lexical Grammar](https://github.com/leegwae/study-javascript/blob/main/03.%20Lexical%20Grammar.md): 자바스크립트의 어휘적 분석
-- [04. Variable and Constant](https://github.com/leegwae/study-javascript/blob/main/04.%20Variable%20and%20Constant.md): 식별자, 변수, 상수
-- [Expression and Statement](https://github.com/leegwae/study-javascript/blob/main/Expression%20and%20Statement.md): 표현식과 문
+- [03. Variable and Constant](https://github.com/leegwae/study-javascript/blob/main/03.%20Variable%20and%20Constant.md): 식별자, 변수, 상수
+- [04. Expression and Statement](https://github.com/leegwae/study-javascript/blob/main/04.%20Expression%20and%20Statement.md): 표현식과 문
 - [05. Data Types](https://github.com/leegwae/study-javascript/blob/main/05.%20Data%20Types.md): 동적 타이핑, 자바스크립트의 데이터 타입
   - [Symbol](https://github.com/leegwae/study-javascript/blob/main/Symbol.md): 자바스크립트의 Symbol 객체
-- [06. Literals](https://github.com/leegwae/study-javascript/blob/main/Literals.md): 리터럴의 종류
+- [06. Literals](https://github.com/leegwae/study-javascript/blob/main/06.%20Literals.md): 리터럴의 종류
   - [Object Initializer](https://github.com/leegwae/study-javascript/blob/main/Object%20initializer.md): 객체 리터럴로 객체 초기화하기
 - [07. Type Conversion](https://github.com/leegwae/study-javascript/blob/main/07.%20Type%20Conversion.md): 자바스크립트의 형 변환
   - 원시 값을 원시 값 혹은 객체로 변환하기
   - [Conversion Object to Primitive Value](https://github.com/leegwae/study-javascript/blob/main/Conversion%20Object%20to%20Primitive%20Value.md): 객체를 원시 값으로 변환하기
 - [08. Operator](https://github.com/leegwae/study-javascript/blob/main/08.%20Operator.md): 자바스크립트의 연산자
   - [Optional Chaning](https://github.com/leegwae/study-javascript/blob/main/Optional%20Chaining.md): 자바스크립트의 옵셔널 체이닝
+  - [Nullish Coalescing](https://github.com/leegwae/study-javascript/blob/main/Nullish%20Coalescing.md): 자바스크립트의 널 병합 연산
 - [09. Control flow](https://github.com/leegwae/study-javascript/blob/main/09.%20Control%20flow.md): block statement와 if, switch statement
 - [10. Loop and Iteration](https://github.com/leegwae/study-javascript/blob/main/10.%20Loop%20and%20Iteration.md): for/while statement와 jump statement
 - [11. Functions](https://github.com/leegwae/study-javascript/blob/main/11.%20Functions.md): 자바스크립트의 함수
@@ -51,6 +51,7 @@
   - [Promise](https://github.com/leegwae/study-javascript/blob/main/Promise.md): 비동기 연산을 위한 자바스크립트의 프로미스
   - [async and await](https://github.com/leegwae/study-javascript/blob/main/async%20and%20await.md): ES6의 async, await
 - [17. Iterator and Generator](https://github.com/leegwae/study-javascript/blob/main/17.%20Iterator%20and%20Generator.md)
+- [Lexical Grammar](https://github.com/leegwae/study-javascript/blob/main/Lexical%20Grammar.md): 자바스크립트의 어휘적 분석
 - [Destructuring assignment](https://github.com/leegwae/study-javascript/blob/main/Destructuring%20assignment.md)
 - [Hoisting](https://github.com/leegwae/study-javascript/blob/main/Hoisting.md): 자바스크립트의 호이스팅
 - [keyword this](https://github.com/leegwae/study-javascript/blob/main/keyword%20this.md): 키워드 this
