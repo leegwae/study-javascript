@@ -1,10 +1,10 @@
 # Optional Chaining
 
-**옵셔널 체이닝(optional chaining) 연산자 `?.`**는 ES11에 도입되었다.
+**옵셔널 체이닝(optional chaining) 연산자 `?.`**는 ES11에 도입되었다. 객체가 nullish가 아닌 경우에만 프로퍼티에 접근하고자 할 때 유용하다.
 
 
 
-## 1. chaining operator
+## 1. 도입 이전
 
 - 참조가 `null` 또는 `undefined`인 객체의 프로퍼티를 접근하려고 시도하면 다음과 같은 에러가 발생한다.
 
@@ -23,9 +23,9 @@ let prop = obj.foo && obj.foo.a;
 
 
 
-## 2. optional chaining
+## 2. optional chaining이란 무엇인가
 
-- 옵셔널 체이닝 연산자 `?.`은 평가의 대상이 nullish(`null` 혹은 `undefined`)이면 `undefined`를 반환한다.
+- 옵셔널 체이닝 연산자 `?.`은 왼쪽 항의 피연산자가 nullish(`null` 혹은 `undefined`)이면 `undefined`를 반환한다. 그렇지 않으면 오른쪽 항의 프로퍼티를 참조한다.
 
 ```js
 let obj = null;
