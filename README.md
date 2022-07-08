@@ -10,11 +10,9 @@
 
 ## History
 
-(2021/08/24~2021/11/02)
-
-(2022/05/29) 문서 구조 개편
-
-(2022/06/03~) 모던 자바스크립트 Deep Dive
+- (2021/08/24~2021/11/02) MDN, 모던 자바스크립트 튜토리얼
+- (2022/05/29) 문서 구조 개편✨
+- (2022/06/03~) 모던 자바스크립트 Deep Dive :pencil:
 
 
 
@@ -27,7 +25,6 @@
 - [05. Data Types](https://github.com/leegwae/study-javascript/blob/main/05.%20Data%20Types.md): 동적 타이핑, 자바스크립트의 데이터 타입
   - [Symbol](https://github.com/leegwae/study-javascript/blob/main/Symbol.md): 자바스크립트의 Symbol 객체
 - [06. Literals](https://github.com/leegwae/study-javascript/blob/main/06.%20Literals.md): 리터럴의 종류
-  - [Object Initializer](https://github.com/leegwae/study-javascript/blob/main/Object%20initializer.md): 객체 리터럴로 객체 초기화하기
 - [07. Type Conversion](https://github.com/leegwae/study-javascript/blob/main/07.%20Type%20Conversion.md): 자바스크립트의 형 변환
   - 원시 값을 원시 값 혹은 객체로 변환하기
   - [Conversion Object to Primitive Value](https://github.com/leegwae/study-javascript/blob/main/Conversion%20Object%20to%20Primitive%20Value.md): 객체를 원시 값으로 변환하기
@@ -36,12 +33,13 @@
   - [Nullish Coalescing](https://github.com/leegwae/study-javascript/blob/main/Nullish%20Coalescing.md): 자바스크립트의 널 병합 연산
 - [09. Control flow](https://github.com/leegwae/study-javascript/blob/main/09.%20Control%20flow.md): block statement와 if, switch statement
 - [10. Loop and Iteration](https://github.com/leegwae/study-javascript/blob/main/10.%20Loop%20and%20Iteration.md): for/while statement와 jump statement
-- [11. Functions](https://github.com/leegwae/study-javascript/blob/main/11.%20Functions.md): 자바스크립트의 함수
+- [11. Objects](https://github.com/leegwae/study-javascript/blob/main/11.%20Objects.md): 자바스크립트의 객체
+  - [Object Initializer](https://github.com/leegwae/study-javascript/blob/main/Object%20Initializer.md): 객체 리터럴로 객체 초기화하기
+  - [Standard Built-in Objects](https://github.com/leegwae/study-javascript/blob/main/Standard%20Built-in%20Objects.md): 표준 내장 객체
+- [12. Functions](https://github.com/leegwae/study-javascript/blob/main/11.%20Functions.md): 자바스크립트의 함수
   - [Arrow Function](https://github.com/leegwae/study-javascript/blob/main/Arrow%20Function.md): 화살표 함수
   - [Call by Sharing](https://github.com/leegwae/study-javascript/blob/main/Call%20by%20Sharing.md)
   - [Closure](https://github.com/leegwae/study-javascript/blob/main/Closure.md): 클로저
-- [12. Objects](https://github.com/leegwae/study-javascript/blob/main/12.%20Objects.md): 자바스크립트의 객체
-  - [Standard Built-in Objects](https://github.com/leegwae/study-javascript/blob/main/Standard%20Built-in%20Objects.md): 표준 내장 객체
 - [13. Indexed collections](https://github.com/leegwae/study-javascript/blob/main/13.%20Indexed%20collections.md): 자바스크립트의 배열
 - [14. Keyed collections](https://github.com/leegwae/study-javascript/blob/main/14.%20Keyed%20collections.md): 자바스크립트의 맵과 집합
 - [15. Prototype and Inheritance](https://github.com/leegwae/study-javascript/blob/main/15.%20Prototype%20and%20Inheritance.md): 프로토타입 기반 언어 자바스크립트에서 상속은 어떻게 이루어지는가
@@ -65,6 +63,7 @@
 
 - [ ] **제목에서 번호 매긴 거 빼기**
 - [ ] **링크 오류 수정하기**
+- [ ] 함수와 객체 문서 서로 번호 바꾸기
 - [x] [01. Introduction](https://github.com/leegwae/study-javascript/blob/main/01.%20Introduction.md)
   - [x] 문서가 무엇에 관한 정보를 담고 있는지 정확하게 서술할 것
 - [x] [02. Hello world](https://github.com/leegwae/study-javascript/blob/main/02.%20Hello%20world.md)
@@ -110,8 +109,8 @@
   - [ ] 보충
 - [ ] Object initializer.md
   - [x] 문서 내 링크 참고해서 작성
-  - [ ] [shortand notation for method](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Object_initializer#%EB%A9%94%EC%84%9C%EB%93%9C_%EC%A0%95%EC%9D%98)
-  - [ ] `...`와 `Object.assign()` 비교(얕은 복사, 깊은 복사 관련하여)
+  - [x] [shortand notation for method](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Object_initializer#%EB%A9%94%EC%84%9C%EB%93%9C_%EC%A0%95%EC%9D%98)
+  - [ ] `...`와 `Object.assign()` 비교(얕은 복사, 깊은 복사56 관련하여)
     - [ ] [참조에 의한 객체 복사](https://ko.javascript.info/object-copy)
 - [ ] Stricit Mode.md
   - [ ] 2 [엄격 모드가 변경하는 것들](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Strict_mode#%EC%97%84%EA%B2%A9%ED%95%9C_%EB%AA%A8%EB%93%9C_%EB%B3%80%EA%B2%BD) 참고해서 보충
