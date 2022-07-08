@@ -111,10 +111,6 @@ alert(user + 100);	// 200
 
 
 
-
-
-
-
 ## 참고
 
 - [모던 자바스크립트 - 객체를 원시형으로 변환하기](https://ko.javascript.info/object-toprimitive)
