@@ -53,7 +53,8 @@ typeof {} === 'object';		// true
 ```js
 let album = {
     title: 'ultraviolence',
-    artist: 'lana'
+    artist: 'lana',
+    displayTitle: function() { console.log(this.title); }
 };
 ```
 
@@ -75,7 +76,7 @@ let obj = {
 };
 ```
 
-이때 프로퍼티의 이름을 식별자의 이름이 같다면 프로퍼티의 이름을 생략할 수 있다.
+이때 프로퍼티의 이름이 식별자의 이름이 같다면 프로퍼티의 이름을 생략할 수 있다.
 
 ```js
 let a = 'foo', b = 1;
