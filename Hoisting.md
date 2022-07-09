@@ -43,18 +43,18 @@ var y = 2;
 
 ## 2. 함수 호이스팅
 
-- 함수 호이스팅: 함수 선언(function statement)은 곧 함수 정의이므로, 상단으로 끌어올려진다.
+- 함수 호이스팅: 함수 선언문의 경우 선언이므로 상단으로 끌어올려진다.
 
 ```javascript
 foo();	// Hello, world
 
-/* 함수 선언 */
+/* 함수 선언문 */
 function foo() {
     console.log("Hello, world!")
 }
 ```
 
-- 변수 호이스팅: 함수 표현식(function expression)이 할당된 변수는 그 선언만 끌어올려지므로, 함수 선언과 같이 수행되지 않는다.
+- 변수 호이스팅: 함수 표현식의 경우 변수 선언만 끌어올려지고 객체 리터럴은 런타임에 평가된다.
 
 ```js
 foo();	// TypeError: fun is not a function
