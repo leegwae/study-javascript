@@ -23,6 +23,8 @@
 - [01. Introduction](https://github.com/leegwae/study-javascript/blob/main/01.%20Introduction.md): 자바스크립트의 역사와 특징에 대하여
 - [02. Hello world](https://github.com/leegwae/study-javascript/blob/main/02.%20Hello%20world.md): 자바스크립트 개발 환경과 자바스크립트 실행하기
 - [03. Variable and Constant](https://github.com/leegwae/study-javascript/blob/main/03.%20Variable%20and%20Constant.md): 식별자, 변수, 상수
+  - [Scope](https://github.com/leegwae/study-javascript/blob/main/Scope.md): 자바스크립트 식별자의 스코프
+  - [Hoisting](https://github.com/leegwae/study-javascript/blob/main/Hoisting.md): 자바스크립트의 호이스팅
 - [04. Expression and Statement](https://github.com/leegwae/study-javascript/blob/main/04.%20Expression%20and%20Statement.md): 표현식과 문
 - [05. Data Types](https://github.com/leegwae/study-javascript/blob/main/05.%20Data%20Types.md): 동적 타이핑, 자바스크립트의 데이터 타입
   - [Symbol](https://github.com/leegwae/study-javascript/blob/main/Symbol.md): 자바스크립트의 Symbol 객체
@@ -38,7 +40,7 @@
 - [11. Objects](https://github.com/leegwae/study-javascript/blob/main/11.%20Objects.md): 자바스크립트의 객체
   - [Object Initializer](https://github.com/leegwae/study-javascript/blob/main/Object%20Initializer.md): 객체 리터럴로 객체 초기화하기
   - [Standard Built-in Objects](https://github.com/leegwae/study-javascript/blob/main/Standard%20Built-in%20Objects.md): 표준 내장 객체
-- [12. Functions](https://github.com/leegwae/study-javascript/blob/main/11.%20Functions.md): 자바스크립트의 함수
+- [12. Functions](https://github.com/leegwae/study-javascript/blob/main/12.%20Functions.md): 자바스크립트의 함수
   - [Arrow Function](https://github.com/leegwae/study-javascript/blob/main/Arrow%20Function.md): 화살표 함수
   - [Call by Sharing](https://github.com/leegwae/study-javascript/blob/main/Call%20by%20Sharing.md)
   - [Closure](https://github.com/leegwae/study-javascript/blob/main/Closure.md): 클로저
@@ -53,7 +55,6 @@
 - [17. Iterator and Generator](https://github.com/leegwae/study-javascript/blob/main/17.%20Iterator%20and%20Generator.md)
 - [Lexical Grammar](https://github.com/leegwae/study-javascript/blob/main/Lexical%20Grammar.md): 자바스크립트의 어휘적 분석
 - [Destructuring assignment](https://github.com/leegwae/study-javascript/blob/main/Destructuring%20assignment.md)
-- [Hoisting](https://github.com/leegwae/study-javascript/blob/main/Hoisting.md): 자바스크립트의 호이스팅
 - [keyword this](https://github.com/leegwae/study-javascript/blob/main/keyword%20this.md): 키워드 this
 - [Strict Mode](https://github.com/leegwae/study-javascript/blob/main/Strict%20Mode.md): 자바스크립트의 엄격 모드
 - [Function](https://github.com/leegwae/study-javascript/blob/main/Function.md): Function 객체의 명세
@@ -95,7 +96,8 @@
   - [x] 8.9 쉼표 연산자 보충
   - [ ] 8.10.3 `void` 연산자 보충
   
-- [ ] 11. Functions.md
+- [ ] 12. Functions.md
+  
   - [ ] [화살표 함수](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Functions/Arrow_functions#%EA%B3%A0%EA%B8%89_%EA%B5%AC%EB%AC%B8) 내용 보충하기
     - [ ] 바인딩하지 않는 것들
   - [ ] [생성자와 함수 선언 차이](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Function#function_%EC%83%9D%EC%84%B1%EC%9E%90%EC%99%80_%ED%95%A8%EC%88%98_%EC%84%A0%EC%96%B8%EC%9D%98_%EC%B0%A8%EC%9D%B4)
@@ -106,7 +108,8 @@
   - [x] 클로저(closure) 분리하기
   - [x] https://ko.javascript.info/closure
   
-- [ ] 12. Objects.md
+- [ ] 11. Objects.md
+  
   - [x] 12.4 [getter, setter 정의하기](https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Working_with_Objects#getters_%EC%99%80_setters_%EC%A0%95%EC%9D%98) 보충
   
 - [ ] Objects.md: 모르는 메서드나 프로퍼티 볼 때마다 추가하기
@@ -181,9 +184,9 @@
 
 - [ ] 자바스크립트의 예약어 정리
 
-- [ ] call by sharing 다듬기
+- [x] call by sharing 다듬기
 
-  - [ ] call by sharing과 call by value 합치기
+  - [ ] ~~call by sharing과 call by value 합치기~~
   
 - [ ] 객체 이니셜라이저의 객체 리터럴 내용 11. objects.md로 옮기기
 
