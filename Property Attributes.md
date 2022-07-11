@@ -1,4 +1,4 @@
-# Property Attribute
+# Property Attributes
 
 ## 내부 슬롯과 내부 메서드
 
