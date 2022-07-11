@@ -188,7 +188,7 @@
 
   - [ ] ~~call by sharing과 call by value 합치기~~
   
-- [ ] 객체 이니셜라이저의 객체 리터럴 내용 11. objects.md로 옮기기
+- [x] 객체 이니셜라이저의 객체 리터럴 내용 11. objects.md로 옮기기
 
 
 
