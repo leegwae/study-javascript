@@ -39,10 +39,11 @@
 - [10. Loop and Iteration](https://github.com/leegwae/study-javascript/blob/main/10.%20Loop%20and%20Iteration.md): for/while statement와 jump statement
 - [11. Objects](https://github.com/leegwae/study-javascript/blob/main/11.%20Objects.md): 자바스크립트의 객체
   - [Object Initializer](https://github.com/leegwae/study-javascript/blob/main/Object%20Initializer.md): 객체 리터럴로 객체 초기화하기
+  - [Property Attributes](https://github.com/leegwae/study-javascript/blob/main/Property%20Attributes.md): 프로퍼티 어트리뷰트
   - [Standard Built-in Objects](https://github.com/leegwae/study-javascript/blob/main/Standard%20Built-in%20Objects.md): 표준 내장 객체
 - [12. Functions](https://github.com/leegwae/study-javascript/blob/main/12.%20Functions.md): 자바스크립트의 함수
   - [Arrow Function](https://github.com/leegwae/study-javascript/blob/main/Arrow%20Function.md): 화살표 함수
-  - [Call by Sharing](https://github.com/leegwae/study-javascript/blob/main/Call%20by%20Sharing.md)
+  - [Call by Sharing](https://github.com/leegwae/study-javascript/blob/main/Call%20by%20Sharing.md): 자바스크립트의 평가 전략
   - [Closure](https://github.com/leegwae/study-javascript/blob/main/Closure.md): 클로저
 - [13. Indexed collections](https://github.com/leegwae/study-javascript/blob/main/13.%20Indexed%20collections.md): 자바스크립트의 배열
 - [14. Keyed collections](https://github.com/leegwae/study-javascript/blob/main/14.%20Keyed%20collections.md): 자바스크립트의 맵과 집합
@@ -189,6 +190,8 @@
   - [ ] ~~call by sharing과 call by value 합치기~~
   
 - [x] 객체 이니셜라이저의 객체 리터럴 내용 11. objects.md로 옮기기
+
+- [ ] Deep Dive 16장 객체 변경 방지
 
 
 
