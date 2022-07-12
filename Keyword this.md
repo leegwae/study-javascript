@@ -1,15 +1,17 @@
 # this
 
-- 자바스크립트에서 `this` 키워드는 맥락에 따라 참조하는 값이 좌우된다.
+- 자바스크립트에서 키워드 `this`는 객체 자신의 프로퍼티나 메서드를 참조하기 위한 자기 참조 변수(self-referencing variable)이다.
+- 따라서 `this`의 바인딩(`this`가 참조하는 값)은 맥락에 따라 달라진다.
   - 런타임 바인딩(runtime binding): 함수가 어떻게 호출되었는지 그 방법에 따라 결정된다.
   - ES5 `bind()`: 호출 방법에 관계없이 함수의 `this` 값 지정 가능
-  - ES6 arrow function: `this`가 없다.
+  - ES6 arrow function: `this`를 바인드하지 않는다.
+
 
 
 
 ## 역사
 
-- `this`는 호출 방법에 따라 그 값이 달라지므로 객체 지향 스타일에서 좋지 않았다.
+- `this`는 호출 방법에 따라 그 값이 달라지므로 객체 지향 스타일에 적합하지 않았다.
 
 ```js
 function Foo() {
@@ -21,10 +23,10 @@ function Foo() {
 }
 
 let f = new Foo();
-f.a === 0;		// true
+f.a === 0;	// true
 ```
 
-- ECMAScript 3/5, `this`를 변수에 할당하여 해결하였다.
+- ES5, `this`를 변수에 할당하여 해결하였다.
 
 ```js
 function Foo() {
@@ -39,7 +41,7 @@ function Foo() {
 let f = new Foo();
 ```
 
-- ES6에서, 화살표 함수는 lexical scope의 `this`를 사용하므로 해결된다.
+- ES6, 화살표 함수는 전역 스코프의 `this`를 사용하므로 해결된다.
 
 ```js
 function Foo() {
@@ -76,6 +78,33 @@ window.b;	// 20
 ## 2. Function context
 
 - `this`는 함수를 호출한 방법에 의해 값이 결정된다.
+
+
+
+| 함수 호출 방식       | `this`가 참조하는 값          |
+| -------------------- | ----------------------------- |
+| 일반 함수로서 호출   | 전역 객체                     |
+| 메서드로서 호출      | 메서드를 호출한 객체          |
+| 생성자 함수로서 호출 | 생성자 함수가 생성할 인스턴스 |
+
+```js
+function foo() {
+    console.log(this);
+    return this;
+}
+
+// 일반 함수로서 호출
+let thisVal = foo();	// window
+console.log(window === thisVal);	// true
+
+const obj = { foo };
+// 메서드로서 호출
+thisVal = obj.foo();	// {foo: ƒ}
+console.log(obj === thisVal);	// true
+
+// 생성자 함수로서 호출
+const instance = new foo();	// foo {}
+```
 
 
 
