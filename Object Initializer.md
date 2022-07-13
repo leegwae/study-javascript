@@ -85,7 +85,7 @@ let merged = { ...obj1, ...obj2 };	// { a: 3, x: 2, y: 4}
 
 
 
-### Shorthand method
+### Shorthand method notation
 
 메서드를 정의할 때 `function` 키워드를 생략할 수 있다.
 
