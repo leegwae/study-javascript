@@ -122,7 +122,7 @@ console.log(unnamed);	// {name: undefined}
 - callable이면서 constructor: 일반 함수 또는 생성자 함수로서 호출할 수 있는 객체
 - callable이면서 non-constructor: 일반 함수로서만 호출할 수 있는 객체
 
-즉, 모든 함수 객체는 callable하지만 모든 함수 객체를 생성자 함수로서 호출할 수는 없다. 한편 내부 메서드 `[[Call]]`과 `[[Construct]]`가 함수의 callable함과 constructor임을 나타낸다.
+즉, 모든 함수 객체는 callable하지만 모든 함수 객체를 생성자 함수로서 호출할 수는 없다.
 
 
 
@@ -220,6 +220,19 @@ const foo = () => {};
 
 new foo();	// TypeError: foo is not a constructor
 ```
+
+
+
+#### `prototype` 프로퍼티
+
+constructor는 `prototype` 프로퍼티를 가지나 non-constructor는 `prototype` 프로퍼티를 가지지 않는다.
+
+```js
+(function() {}).hasOwnProperty('prototype');	// true
+(() => {}).hasOwnProperty('prototype');	// false
+```
+
+`prototype` 프로퍼티는 생성자 함수가 생성할 인스턴스의 프로토타입 객체를 가리킨다.
 
 
 
