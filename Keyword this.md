@@ -204,6 +204,13 @@ console.log(lux.name);	// lux
 
 ## 간접 호출하기
 
+`this` 값을 명시적으로 지정할 수 있다. 이때 자신의 프로토타입 체인에 속하지 않는 메서드를 간접적으로 호출하게 할 수도 있다.
+
+- `Function.prototype.apply/call`: 함수를 호출하며 함수 내부의 `this`를 지정한 값으로 사용
+- `Function.prototype.bind`: 함수 내부의 `this`의 값을 지정한 새로운 함수를 반환
+
+
+
 ### `Function.prototype.apply/call`
 
 `Function.prototype.apply`와 `Function.prototype.call`을 사용하면 함수를 호출할 때 함수 내부 `this`의 값을 지정할 수 있다.
@@ -213,7 +220,8 @@ console.log(lux.name);	// lux
 호출할 함수.call(this에 바인딩할 값, 인수1, 인수2, ...);
 ```
 
-- `apply`의 인수의 배열이나 `call`의 `인수`들은 `호출할 함수`의 매개변수로 전달된다. `호출할 함수`에 전달할 인수가 없다면 생략할 수 있다.
+- `apply`의 `인수의 배열`이나 `call`의 `인수`들은 `호출할 함수`의 매개변수로 전달된다. `호출할 함수`에 전달할 인수가 없다면 생략할 수 있다.
+- `apply`의 `인수의 배열`은 배열이거나 유사 배열 객체일 수 있다.
 - `this에 바인딩할 값`은 `호출할 함수` 내부의 `this`에 바인딩된다.
 - `this에 바인딩할 값`이 객체가 아니면 객체로 변환한 값이 `this`에 바인딩된다.
   - `null`, `undefined`: 전역 객체
