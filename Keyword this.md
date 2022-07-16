@@ -1,72 +1,22 @@
 # this
 
-- 자바스크립트에서 키워드 `this`는 객체 자신의 프로퍼티나 메서드를 참조하기 위한 자기 참조 변수(self-referencing variable)이다.
-- 따라서 `this`의 바인딩(`this`가 참조하는 값)은 맥락에 따라 달라진다.
+- 키워드 `this`는 객체 자신의 프로퍼티나 메서드를 참조하기 위한 자기 참조 변수(self-referencing variable)이다.
+- 따라서 `this`의 바인딩(`this`가 참조하는 값)은 함수를 호출하는 방식과 엄격 모드에 따라 달라진다.
   - 런타임 바인딩(runtime binding): 함수가 어떻게 호출되었는지 그 방법에 따라 결정된다.
-  - ES5 `bind()`: 호출 방법에 관계없이 함수의 `this` 값 지정 가능
-  - ES6 arrow function: `this`를 바인드하지 않는다.
+  - ES5 `Function.prototype.apply/call/bind` 메서드: 호출 방법에 관계없이 함수의 `this` 값 지정 가능
+  - ES6 화살표 함수: `this`를 바인드하지 않는다.
 
 
 
+## Gobal context
 
-## 역사
-
-- `this`는 호출 방법에 따라 그 값이 달라지므로 객체 지향 스타일에 적합하지 않았다.
-
-```js
-function Foo() {
-    this.a = 0;
-    
-    setInterval(function () {
-        this.a++;
-    }, 1000);
-}
-
-let f = new Foo();
-f.a === 0;	// true
-```
-
-- ES5, `this`를 변수에 할당하여 해결하였다.
+`this`는 전역 문맥에서 전역 객체를 참조한다.
 
 ```js
-function Foo() {
-    let self = this;
-    self.a = 0;
-    
-    setInterval(function () {
-        self.a++;
-    }, 1000);
-}
-
-let f = new Foo();
-```
-
-- ES6, 화살표 함수는 전역 스코프의 `this`를 사용하므로 해결된다.
-
-```js
-function Foo() {
-    this.a = 0;
-    
-    setInterval(() => {
-        this.a++;
-    }, 1000);
-}
-
-let f = new Foo();
-```
-
-
-
-## 1. Gobal context
-
-- `this`는 엄격 모드 여부에 관계없이 전역 객체를 참조한다.
-
-```js
-// 웹 브라우저에서 전역 객체는 window 객체
 this === window;		// true
 
 // 전역 변수 선언
-a = 10
+a = 10;
 window.a;	// 10
 
 this.b = 20;
@@ -75,17 +25,15 @@ window.b;	// 20
 
 
 
-## 2. Function context
+## Function context
 
-- `this`는 함수를 호출한 방법에 의해 값이 결정된다.
+`this` 바인딩은 함수 호출 방식에 따라 동적으로 결정된다.
 
-
-
-| 함수 호출 방식       | `this`가 참조하는 값          |
-| -------------------- | ----------------------------- |
-| 일반 함수로서 호출   | 전역 객체                     |
-| 메서드로서 호출      | 메서드를 호출한 객체          |
-| 생성자 함수로서 호출 | 생성자 함수가 생성할 인스턴스 |
+| 함수 호출 방식       | `this`가 참조하는 값          | 엄격 모드의 경우 |
+| -------------------- | ----------------------------- | ---------------- |
+| 일반 함수로서 호출   | 전역 객체                     | `undefined`      |
+| 메서드로서 호출      | 메서드를 호출한 객체          | 동일             |
+| 생성자 함수로서 호출 | 생성자 함수가 생성할 인스턴스 | 동일             |
 
 ```js
 function foo() {
@@ -108,63 +56,237 @@ const instance = new foo();	// foo {}
 
 
 
-### 2.1 단순 호출
+### 일반 함수로 호출
 
-- 비엄격 모드: 호출에 의해 값이 설정되지 않으므로, 전역 객체 참조
-
-```js
-function foo() { return this; }
-foo() === window;
-```
-
-- 비엄격 모드: `this` 값을 설정하려면 `call` 혹은 `apply` 메서드를 사용한다.
-  - 이 메서드들은 `this`로 전달된 값이 객체가 아니면 객체로 변환하기 위해 시도한다(박싱).
-    - `null`, `undefined`: 전역 객체
-    - 원시값: 래퍼 객체를 이용하여 객체로 변환
+- 모든 함수는 일반 함수로 호출했다면 일반 함수 내의 `this`는 전역 객체를 참조한다.
 
 ```js
-let obj = 'custom';
-function foo() { return this };
-
-foo() === window;		// true
-foo.call(obj);	// [object String]
-foo.apply(undefined); // [object global] 
+function foo() {
+    console.log(this);
+}
+foo();	// window
 ```
 
-- 엄격 모드: `this`의 값이 excution context(실행 문맥)에 진입한다.
-  - 아래의 경우에서 `foo()`는 객체의 메서드나 속성으로 호출하지 않고 직접 호출하였으므로 `this`는 `undefined` (Strict Mode.md 참고)
-  - `window.foo()`는 `window` 객체의 메서드로서 호출되었으므로 `this`는 `window`
+- 그러나 엄격 모드의 경우 `this`는 `undefined`를 바인딩한다.
 
 ```js
 function foo() {
     'use strict';
-    return this;
+    
+    console.log(this);
 }
-
-foo() === undefined;	// true
-window.foo() === window;	// true
+foo();	// undefined
 ```
 
+전역 함수 `foo`는 전역 객체 `window`의 프로퍼티이지만 `window`가 `foo`를 메서드로서 호출한 것으로 보지 않는다.
 
 
-### 2.2 bind 메서드
 
-- 호출 방법에 관계없이 `this`의 값을 영구적으로 `bind`의 첫번째 매개변수로 고정(그 외 매개변수는 함수의 인수로 전달)
+#### 중첩 함수와 콜백 함수 문제
+
+- 메서드 내에 정의된 중첩 함수도 일반 함수로 호출한다면 중첩 함수 내의 `this`는 전역 객체를 참조한다.
 
 ```js
-function foo() { return this.a; };
+const obj = {
+    foo() {
+        console.log(this === obj);	// true
+        
+        function bar() {
+            console.log(this === window);	// true
+        }
+        bar();
+    }
+}
+```
 
-let a = foo.bind({a: 'prometheus'});
-console.log(a());
-let b = foo.bind({a: 'lost paradise'});
-console.log(b());
+- 콜백 함수도 일반 함수로 호출된다면 콜백 함수 내의 `this`는 전역 객체를 참조한다.
+
+```js
+const val = 1;
+
+const obj = {
+    val: 100,
+    foo() {
+        setTimeout(function () {
+            console.log(`this의 값: ${this}`);	// window
+            console.log(`this.val의 값: ${this.val}`);	// 1
+        }, 100);
+    }
+};
+
+obj.foo();
 ```
 
 
 
-### 2.3 화살표 함수
+#### 해결
 
-- `this`의 값은 영구적으로 생성 시점에서 `this`를 감싼 정적 범위(enclosing lexcial context)이다. 
+- 이 경우 임의의 변수에 `this`를 할당하여 중첩 함수나 콜백 함수에서 사용한다.
+
+```js
+const val = 1;
+
+const obj = {
+    val: 100,
+    foo() {
+        const self = this;
+
+        setTimeout(function () {
+            console.log(`this.val의 값: ${self.val}`);
+        }, 100);
+    }
+};
+
+obj.foo();	// this.val의 값: 100
+```
+
+- 아니면 `Function.prototype`의 `apply`, `call`, `bind` 메서드를 사용한다.
+
+```js
+const val = 1;
+
+const obj = {
+    val: 100,
+    foo() {
+        setTimeout(function () {
+            console.log(`this.val의 값: ${this.val}`);
+        }.bind(this), 100);
+    }
+};
+
+obj.foo();	// this.val의 값: 100
+```
+
+[간접 호출하기](#간접-호출하기)를 참고한다.
+
+
+
+### 메서드로 호출
+
+메서드로 호출했다면 메서드 내부의 `this`는 메서드를 호출한 객체에 바인딩된다.
+
+```js
+const lux = {
+    name: 'lux',
+    getName() {
+        return this.name;
+    }
+}
+
+const rammus = {
+    name: 'rammus'
+};
+rammus.getName = lux.getName;
+console.log(rammus.getName());	// rammus
+
+const getName = lux.getName;
+console.log(getName());	// ''
+```
+
+`line 15`에서 `getName()`은 일반 함수를 호출하는 것이므로`this`는 전역 객체 `window`에 바인딩되고 `window.name`을 반환한다. 한편, 브라우저 환경에서 `window.name`은 브라우저 창의 이름을 나타내고 기본값은 `''`이다.
+
+
+
+### 생성자 함수로 호출
+
+생성자 함수로 호출했다면 생성자 함수 내부의 `this`는 생성자 함수가 생성할 인스턴스에 바인딩된다.
+
+```js
+function Champion(name) {
+    this.name = name;
+}
+
+const lux = new Champion('lux');
+console.log(lux.name);	// lux
+```
+
+
+
+## 간접 호출하기
+
+### `Function.prototype.apply/call`
+
+`Function.prototype.apply`와 `Function.prototype.call`을 사용하면 함수를 호출할 때 함수 내부 `this`의 값을 지정할 수 있다.
+
+```js
+호출할 함수.apply(this에 바인딩할 값, 인수의 배열);
+호출할 함수.call(this에 바인딩할 값, 인수1, 인수2, ...);
+```
+
+- `apply`의 인수의 배열이나 `call`의 `인수`들은 `호출할 함수`의 매개변수로 전달된다. `호출할 함수`에 전달할 인수가 없다면 생략할 수 있다.
+- `this에 바인딩할 값`은 `호출할 함수` 내부의 `this`에 바인딩된다.
+- `this에 바인딩할 값`이 객체가 아니면 객체로 변환한 값이 `this`에 바인딩된다.
+  - `null`, `undefined`: 전역 객체
+  - 원시 값: 래퍼 객체로 변환
+
+```js
+const champion = {
+    name: 'lux'
+};
+
+function getName() {
+    return this.name;
+}
+
+console.log(getName.call(champion));	// lux
+```
+
+- 보통 어떤 객체가 자신의 프로토타입 체인에 존재하지 않는 프로퍼티나 메서드를 사용하고 싶을 때 사용한다. 예를 들어 유사 배열 객체 `arguments`가 배열 메서드(`Array.prototype`의 메서드)를 사용하고자 할 때 `call`이나 `apply`로 간접 호출한다.
+
+```js
+function sum() {
+    // return [...arguments].reduce((acc, cur) => acc + cur, 0);
+    return Array.prototype.reduce.call(arguments,
+                                      (acc, cur) => acc + cur,
+                                      0);
+}
+```
+
+
+
+### `Function.prototype.bind`
+
+`Function.prototype.bind`는 `Function.prototype.call/apply`처럼 `this`의 값이 바뀐 함수를 호출하지 않고 다만 반환한다.
+
+```js
+함수.bind(this에 바인딩할 값);
+```
+
+- `this에 바인딩할 값`은 `함수` 내부의 `this`에 바인딩된다.
+- 보통 메서드 내부의 `this`와 메서드 내부의 중첩 함수 또는 콜백 함수의 `this`가 일치하지 않는 문제를 해결하기 위해 사용한다.
+
+```js
+var val = 'unknown';
+console.log(this.val);	// unknown
+
+const lux = {
+    val: 'lux',
+    foo(callback) {
+        setTimeout(callback.bind(this), 100);
+    }
+};
+
+const rammus = {
+    val: 'rammus',
+    foo(callback) {
+        setTimeout(callback, 100);
+    }
+};
+
+lux.foo(function () {
+    console.log(this.val);
+});	// lux
+
+rammus.foo(function () {
+    console.log(this.val);
+});	// unkown
+```
+
+
+
+## 화살표 함수
+
+- 화살표 함수 내부에 있는 `this`의 값은 영구적으로 생성 시점에서 `this`를 감싼 정적 범위(enclosing lexcial context)이다. 
   - 즉, 전역 코드(global code)에서는 전역 객체(global object)가 값이 된다.
   - `call`, `bind`, `apply`로 `this`의 값을 정해주어도 무시한다.
 
@@ -179,8 +301,6 @@ console.log(foo() === obj);		// true
 let bar = { func: foo };
 bar.foo() === obj;			// true
 ```
-
-
 
 ```js
 let obj = {
@@ -213,48 +333,9 @@ foo() === window;	// true
 
 
 
-### 2.4 메서드로 호출
-
-- 함수가 어떤 객체의 메서드로 호출되면 `this`의 값은 그 객체이다.
-
-```js
-let foo = {
-    func: () => this,
-};
-
-let bar = {
-    func: function () { return this; },
-}
-
-foo.func() === window;		// true
-bar.func() === bar;			// true
-```
-
-
-
-### 2.5 생성자 호출
-
-- 생성자로서 `new` 키워드와 함께 호출된 함수의 `this` 값은 새로 생긴 객체이다.
-
-```js
-function foo() { this.a = 12 };
-let obj = new foo();
-obj.a;		// 12
-
-function bar() {
-    this.a = 12;
-    return { a: 7 };
-}
-
-obj = new bar();
-obj.a;		// 7
-```
-
-
-
 ## 참고
 
-[MDN this](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/this)
-
-[MDN Functions](https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Functions#%EC%82%AC%EC%A0%84%EC%A0%81_this)
+- [MDN this](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/this)
+- [MDN Functions](https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Functions#%EC%82%AC%EC%A0%84%EC%A0%81_this)
+- 모던 자바스크립트 Deep Dive 22장: this
 
