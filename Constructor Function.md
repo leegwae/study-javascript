@@ -18,6 +18,7 @@
 ```js
 function Champion(name) {
     this.name = name;
+    this.displayName = function() { console.log(this.name); };
 }
 ```
 
@@ -30,6 +31,14 @@ function Champion(name) {
 1. 인스턴스 생성과 `this` 바인딩
 2. 인스턴스 초기화
 3. 인스턴스 반환
+
+```javascript
+function Champion(name) {
+    this.name = name;
+}
+```
+
+위 생성자 함수 선언문을 기준으로 알아본다.
 
 
 
