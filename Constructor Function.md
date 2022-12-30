@@ -241,7 +241,7 @@ constructor는 `prototype` 프로퍼티를 가지나 non-constructor는 `prototy
 (() => {}).hasOwnProperty('prototype');	// false
 ```
 
-`prototype` 프로퍼티는 생성자 함수가 생성할 인스턴스의 프로토타입 객체를 가리킨다.
+`prototype` 프로퍼티는 생성자 함수가 생성할 인스턴스의 프로토타입 객체를 가리킨다. [Prototype and Inheritance.md](https://github.com/leegwae/study-javascript/blob/main/15.%20Prototype%20and%20Inheritance.md)를 참고한다.
 
 
 
