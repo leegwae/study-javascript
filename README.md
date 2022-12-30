@@ -14,12 +14,13 @@
 
 - [01. Introduction](https://github.com/leegwae/study-javascript/blob/main/01.%20Introduction.md): 자바스크립트의 역사와 특징에 대하여
 - [02. JavaScript Runtime](https://github.com/leegwae/study-javascript/blob/main/02.%20JavaScript%20Runtime.md): 자바스크립트 개발 환경과 자바스크립트 실행하기
+- [Lexical Grammar](https://github.com/leegwae/study-javascript/blob/main/Lexical%20Grammar.md): 자바스크립트의 어휘적 분석
 - [03. Variable and Constant](https://github.com/leegwae/study-javascript/blob/main/03.%20Variable%20and%20Constant.md): 식별자, 변수, 상수
   - [Scope](https://github.com/leegwae/study-javascript/blob/main/Scope.md): 자바스크립트 식별자의 스코프
   - [Hoisting](https://github.com/leegwae/study-javascript/blob/main/Hoisting.md): 자바스크립트의 호이스팅
 - [04. Expression and Statement](https://github.com/leegwae/study-javascript/blob/main/04.%20Expression%20and%20Statement.md): 표현식과 문
 - [05. Data Types](https://github.com/leegwae/study-javascript/blob/main/05.%20Data%20Types.md): 동적 타이핑, 자바스크립트의 데이터 타입
-  - [Symbol](https://github.com/leegwae/study-javascript/blob/main/Symbol.md): 자바스크립트의 Symbol 객체
+  - [Object](https://github.com/leegwae/study-javascript/blob/main/Object.md): Object 객체의 명세
 - [06. Literals](https://github.com/leegwae/study-javascript/blob/main/06.%20Literals.md): 리터럴의 종류
 - [07. Type Conversion](https://github.com/leegwae/study-javascript/blob/main/07.%20Type%20Conversion.md): 자바스크립트의 형 변환
   - 원시 값을 원시 값 혹은 객체로 변환하기
@@ -35,39 +36,51 @@
   - [Property Attributes](https://github.com/leegwae/study-javascript/blob/main/Property%20Attributes.md): 프로퍼티 어트리뷰트
   - [Standard Built-in Objects](https://github.com/leegwae/study-javascript/blob/main/Standard%20Built-in%20Objects.md): 표준 내장 객체
 - [12. Functions](https://github.com/leegwae/study-javascript/blob/main/12.%20Functions.md): 자바스크립트의 함수
-  - [Arrow Function](https://github.com/leegwae/study-javascript/blob/main/Arrow%20Function.md): 화살표 함수
   - [Call by Sharing](https://github.com/leegwae/study-javascript/blob/main/Call%20by%20Sharing.md): 자바스크립트의 평가 전략
-  - [Closure](https://github.com/leegwae/study-javascript/blob/main/Closure.md): 클로저
-- [13. Indexed collections](https://github.com/leegwae/study-javascript/blob/main/13.%20Indexed%20collections.md): 자바스크립트의 배열
-- [14. Keyed collections](https://github.com/leegwae/study-javascript/blob/main/14.%20Keyed%20collections.md): 자바스크립트의 맵과 집합
 - [15. Prototype and Inheritance](https://github.com/leegwae/study-javascript/blob/main/15.%20Prototype%20and%20Inheritance.md): 프로토타입 기반 언어 자바스크립트에서 상속은 어떻게 이루어지는가
+- [Keyword this](https://github.com/leegwae/study-javascript/blob/main/Keyword%20this.md): 키워드 this
+- [Module](https://github.com/leegwae/study-javascript/blob/main/Module.md):  자바스크립트의 모듈 시스템
+- [Destructuring assignment](https://github.com/leegwae/study-javascript/blob/main/Destructuring%20assignment.md)
+
+***
+
+문서 개편 필요
+
+- [Symbol](https://github.com/leegwae/study-javascript/blob/main/Symbol.md): 자바스크립트의 Symbol 객체 명세
+- [Function](https://github.com/leegwae/study-javascript/blob/main/Function.md): Function 객체의 명세
+- [Arrow Function](https://github.com/leegwae/study-javascript/blob/main/Arrow%20Function.md): 화살표 함수
+- [Closure](https://github.com/leegwae/study-javascript/blob/main/Closure.md): 클로저
 - [16. Asynchronous JavaScript](https://github.com/leegwae/study-javascript/blob/main/16.%20Asynchronous%20JavaScript.md)
   - [Introducing Asynchrnous JavaScript](https://github.com/leegwae/study-javascript/blob/main/Introducing%20Asynchronous%20JavaScript.md): 일반적인 비동기 개념과 비동기를 위한 자바스크립트의 콜백과 프로미스 도입
   - [Timeouts and intervals](https://github.com/leegwae/study-javascript/blob/main/Timeouts%20and%20intervals.md)
   - [Promise](https://github.com/leegwae/study-javascript/blob/main/Promise.md): 비동기 연산을 위한 자바스크립트의 프로미스
   - [async and await](https://github.com/leegwae/study-javascript/blob/main/async%20and%20await.md): ES6의 async, await
 - [17. Iterator and Generator](https://github.com/leegwae/study-javascript/blob/main/17.%20Iterator%20and%20Generator.md)
-- [Module](https://github.com/leegwae/study-javascript/blob/main/Module.md):  자바스크립트의 모듈 시스템
-- [Lexical Grammar](https://github.com/leegwae/study-javascript/blob/main/Lexical%20Grammar.md): 자바스크립트의 어휘적 분석
-- [Destructuring assignment](https://github.com/leegwae/study-javascript/blob/main/Destructuring%20assignment.md)
-- [Keyword this](https://github.com/leegwae/study-javascript/blob/main/Keyword%20this.md): 키워드 this
 - [Strict Mode](https://github.com/leegwae/study-javascript/blob/main/Strict%20Mode.md): 자바스크립트의 엄격 모드
-- [Function](https://github.com/leegwae/study-javascript/blob/main/Function.md): Function 객체의 명세
-- [Object](https://github.com/leegwae/study-javascript/blob/main/Object.md): Object 객체의 명세
+- [13. Indexed collections](https://github.com/leegwae/study-javascript/blob/main/13.%20Indexed%20collections.md): 자바스크립트의 배열
+- [14. Keyed collections](https://github.com/leegwae/study-javascript/blob/main/14.%20Keyed%20collections.md): 자바스크립트의 맵과 집합
 
 
 
 ## TODO
 
-- [ ] **제목에서 번호 매긴 거 빼기**
+- [ ] **제목에서 번호 매긴 거 빼기** 혹은 번호 잘 정리하기
 - [ ] **링크 오류 수정하기**
 - [ ] ECMA발표연도 -> ES*로 바꾸기
+- [ ] ECMA 연도별로 정리
+- [ ] 하이퍼링크가 md 파일이면 확장자 명시하기
 - [x] 함수와 객체 문서 서로 번호 바꾸기
-- [x] [01. Introduction](https://github.com/leegwae/study-javascript/blob/main/01.%20Introduction.md)
+- [ ] Introduction.md
+  
   - [x] 문서가 무엇에 관한 정보를 담고 있는지 정확하게 서술할 것
-- [x] [02. Hello world](https://github.com/leegwae/study-javascript/blob/main/02.%20Hello%20world.md)
+  - [ ] 브라우저 부분 02.JavaScript Runtime.md로 옮기기
+- [ ] **JavaScript Runtime.md**
+  
   - [x] ~~다른 문서로 편입하기~~ 문서 내용 새롭게 개편
-- [ ] [03. Lexical Grammar](https://github.com/leegwae/study-javascript/blob/main/03.%20Lexical%20Grammar.md)
+  - [ ] 브라우저와 Node.js 런타임으로서의 기능 중심으로 보충하기
+  - [ ] 자바스크립트 엔진
+- [ ] Execution Context 공부하고 Scope.md 다듬기 
+- [ ] Lexical Grammar
   - [ ] 3.5 토큰 - 키워드, 식별자, 리터럴, 구분자 보충
 - [ ] 06. Literals
   - [ ] 부동소수점 리터럴 정리하기
@@ -94,6 +107,7 @@
 - [ ] Objects.md: 모르는 메서드나 프로퍼티 볼 때마다 추가하기
   - [ ] 생성자 메서드
   - [ ] 프로토타입 메서드
+  - [ ] hidden class (p.147 v8 엔진 동작 상세)
 - [ ] 13. Indexed collections.md
   - [ ] [배열 메서드](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Indexed_collections#array_methods) 따로 문서 만들기
 - [ ] 14. Keyed collections.md
@@ -144,6 +158,11 @@
   - [ ] ~~call by sharing과 call by value 합치기~~
 - [x] 객체 이니셜라이저의 객체 리터럴 내용 11. objects.md로 옮기기
 - [ ] Deep Dive 16장 객체 변경 방지
+- [ ] Deep Dive 14장 전역 변수의 문제점
+- [ ] Property Attribute
+
+  - [ ] 객체의 변경 방지하기
+
 
 
 
