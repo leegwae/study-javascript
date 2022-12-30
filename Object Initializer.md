@@ -103,7 +103,7 @@ let obj2 = {
 }
 ```
 
-이때 메서드 축약 표현으로 정의한 메서드는 프로퍼티에 할당한 함수와 다르게 동작한다.
+이때 메서드 축약 표현으로 정의한 메서드는 프로퍼티에 할당한 함수와 다르게 동작한다. [Constructor Function - constructor와 non-constructor의 구분](https://github.com/leegwae/study-javascript/blob/main/Constructor%20Function.md#constructor와-non-constructor의-구분)을 참고한다.
 
 
 
