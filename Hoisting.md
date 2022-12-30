@@ -1,6 +1,6 @@
 # Hoisting
 
-- **호이스팅(hoisting)**: 식별자가 자신이 속한 스코프의 최상단으로 끌어올려지는 것이다. `var`로 선언된 변수는 함수에 지역적이라면 함수의 최상단으로 호이스팅되며 전역 스코프를 가지면 코드의 최상단으로 호이스팅된다. 전역에 `function`으로 선언된 함수 선언문 역시 코드의 최상단으로 호이스팅된다. 자바스크립트 엔진이 변수의 선언을 런타임 이전에 처리하고 런타임에 스크립트를 한 줄씩 실행하는데, 이것은 변수가 스크립트의 최상단에 선언된 스크립트를 처리하는 것과 같기 때문이다.
+- **호이스팅(hoisting)**: 식별자가 자신이 속한 스코프의 최상단으로 끌어올려지는 것이다. `var`로 선언된 변수는 함수에 지역적이라면 함수의 최상단으로 호이스팅되며 전역 스코프를 가지면 코드의 최상단으로 호이스팅된다. 전역에 `function`으로 선언된 함수 선언문 역시 코드의 최상단으로 호이스팅된다.
 - 이때, **끌어올려진 것은 '선언' 뿐이다**. 선언 이전에 참조한 `var` 변수는 `ReferenceError`를 발생시키지 않지만 초기화되지 않은 변수가 가지는 기본값 `undefined`를 반환할 수 있다. 따라서 함수 내의 모든 `var`문은 함수 상단에 두는 것이 좋다.
 
 ```js
@@ -110,5 +110,6 @@ var foo = function() {
 - [MDN Hoisting](https://developer.mozilla.org/ko/docs/Glossary/Hoisting)
 - [MDN var](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/var#var_%ED%98%B8%EC%9D%B4%EC%8A%A4%ED%8C%85(hoisting))
 - [MDN 자바스크립트 안내서](https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Grammar_and_types#%EB%B3%80%EC%88%98_%ED%98%B8%EC%9D%B4%EC%8A%A4%ED%8C%85)
+- 모던 자바스크립트 Deep Dive 4장 변수
 - 모던 자바스크립트 Deep Dive 15장: `let`, `const` 키워드와 블록 레벨 스코프
 
