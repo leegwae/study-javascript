@@ -294,6 +294,8 @@ console.log(champion.name);	// lux
 
 생성자 함수가 `new` 연산자와 함께 호출되면 빈 객체를 생성하고 `this`에 바인딩하는데, 이때 `this`와 `Champion`은 프로토타입에 의해 연결된다. 만약 일반 함수로 호출되었다면 `this`는 전역 객체 `window`를 가리키므로 `this`와 `Champion`은 프로토타입에 의해 연결되지 않는다. 이 경우 `this instance of Champion === false`이므로 `!(this...생략)`은 `true`로 평가된다. 이때 `new Champion(name)`을 반환하도록 하여 `new` 연산자 없이 호출되어도 생성자 함수로서 호출될 수 있도록 한다.
 
+`this`의 값은 문맥에 따라 달라질 수 있다. [Keyword this.md](https://github.com/leegwae/study-javascript/blob/main/Keyword%20this.md)를 참고한다.
+
 
 
 ### 빌트인 생성자 함수의 호출

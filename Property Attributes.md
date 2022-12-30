@@ -1,5 +1,7 @@
 # Property Attributes
 
+> 프로퍼티의 상태는 자바스크립트가 내부적으로 관리하는 값 중 하나로, 프로퍼티 어트리뷰트 내부 슬롯으로 접근할 수 있다.
+
 ## 내부 슬롯과 내부 메서드
 
 - ECMAScript는 자바스크립트 엔진의 내부 로직을 설명하기 위해 의사 프로퍼티(pseudo property)로 **내부 슬롯**과 의사 메서드(pseudo method)로 **내부 메서드**를 사용한다. 내부 슬롯과 내부 메서드는 이중 대괄호 `[[]]`로 감싸 표현한다.
@@ -139,3 +141,11 @@ console.log(JSON.stringfy(descriptor));
 ## 객체의 변경 방지하기
 
 TODO
+
+
+
+## 참고
+
+- 모던 자바스크립트 Deep Dive - 16장 프로퍼티 어트리뷰트
+- [MDN - Object.defineProperty()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty)
+
