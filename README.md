@@ -10,18 +10,10 @@
 
 
 
-## History
-
-- (2021/08/24~2021/11/02) MDN, 모던 자바스크립트 튜토리얼
-- (2022/05/29) 문서 구조 개편✨
-- (2022/06/03~) 모던 자바스크립트 Deep Dive :pencil:
-
-
-
 ## TOC
 
 - [01. Introduction](https://github.com/leegwae/study-javascript/blob/main/01.%20Introduction.md): 자바스크립트의 역사와 특징에 대하여
-- [02. Hello world](https://github.com/leegwae/study-javascript/blob/main/02.%20Hello%20world.md): 자바스크립트 개발 환경과 자바스크립트 실행하기
+- [02. JavaScript Runtime](https://github.com/leegwae/study-javascript/blob/main/02.%20JavaScript%20Runtime.md): 자바스크립트 개발 환경과 자바스크립트 실행하기
 - [03. Variable and Constant](https://github.com/leegwae/study-javascript/blob/main/03.%20Variable%20and%20Constant.md): 식별자, 변수, 상수
   - [Scope](https://github.com/leegwae/study-javascript/blob/main/Scope.md): 자바스크립트 식별자의 스코프
   - [Hoisting](https://github.com/leegwae/study-javascript/blob/main/Hoisting.md): 자바스크립트의 호이스팅
