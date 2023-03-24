@@ -79,6 +79,7 @@
   - [x] ~~다른 문서로 편입하기~~ 문서 내용 새롭게 개편
   - [ ] 브라우저와 Node.js 런타임으로서의 기능 중심으로 보충하기
   - [ ] 자바스크립트 엔진
+- [ ] Variable and Constant 참고 링크 보고 TDZ 섹션 파기
 - [ ] Execution Context 공부하고 Scope.md 다듬기 
 - [ ] Lexical Grammar
   - [ ] 3.5 토큰 - 키워드, 식별자, 리터럴, 구분자 보충
