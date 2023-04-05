@@ -153,6 +153,5 @@ obj + 100;	// 100100: hint가 default이며 원시값이므로 그대로 반환
 ## 참고
 
 - [Object to primitive conversion](https://javascript.info/object-toprimitive)
-
 - [MDN - Object.prototype.toString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/toString)
 - [MDN - Object.prototype.valueOf()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/valueOf)
