@@ -4,7 +4,7 @@
 
 
 
-## 객체 이니셜라이저로 초기화하기
+## 변수에 객체 값 할당하기
 
 ```js
 let album = {
@@ -103,7 +103,7 @@ let obj2 = {
 }
 ```
 
-이때 메서드 축약 표현으로 정의한 메서드는 프로퍼티에 할당한 함수와 다르게 동작한다. [Constructor Function - constructor와 non-constructor의 구분](https://github.com/leegwae/study-javascript/blob/main/Constructor%20Function.md#constructor와-non-constructor의-구분)을 참고한다.
+이처럼 메서드 축약 표현으로 정의한 메서드와 프로퍼티의 값으로 함수 객체를 할당하여 정의한 메서드는 서로 다르게 동작한다. 전자는 non-construcor로 새로운 객체를 생성하는 생성자 함수로 사용할 수 없지만 후자는 constructor로 생성자 함수로 사용할 수 있다. [Constructor Function: constructor와 non-constructor의 구분](https://github.com/leegwae/study-javascript/blob/main/Constructor%20Function.md#constructor와-non-constructor의-구분)을 참고한다.
 
 
 
