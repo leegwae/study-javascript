@@ -105,6 +105,44 @@ var foo = function() {
 
 
 
+## 함수 호이스팅이 변수 호이스팅보다 우선한다
+
+함수 선언과 변수 선언이 중복되면 함수 선언이 우선하여 중복 선언을 무시한다.
+
+```javascript
+console.log(typeof foo);
+
+var foo;
+function foo() {}
+```
+
+자바스크립트 엔진은 위 코드를 다음과 같이 해석한다.
+
+```javascript
+function foo() {}
+console.log(typeof foo);	// function
+```
+
+그렇다면 다음 코드는 어떤가?
+
+```javascript
+var foo = 1;
+function foo() {}
+
+console.log(typeof foo);
+```
+
+자바스크립트 엔진은 다음과 같이 해석한다.
+
+```javascript
+function foo() {}
+foo = 1;
+
+console.log(typeof foo);	// number
+```
+
+
+
 ## 참고
 
 - [MDN Hoisting](https://developer.mozilla.org/ko/docs/Glossary/Hoisting)
@@ -112,4 +150,6 @@ var foo = function() {
 - [MDN 자바스크립트 안내서](https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Grammar_and_types#%EB%B3%80%EC%88%98_%ED%98%B8%EC%9D%B4%EC%8A%A4%ED%8C%85)
 - 모던 자바스크립트 Deep Dive 4장 변수
 - 모던 자바스크립트 Deep Dive 15장: `let`, `const` 키워드와 블록 레벨 스코프
+- You Don't Know JS Scope and Closures Chapter 4 Hoisting
+- [Variable and Function Hoisting in JavaScript](https://medium.com/@e.be.walk/variable-and-function-hoisting-in-javascript-e0c8ce1d31a5)
 
