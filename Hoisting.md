@@ -105,6 +105,26 @@ var foo = function() {
 
 
 
+### 블록 내부의 함수 선언과 호이스팅
+
+ES6 이전 ECMAScript 명세는 블록 내부에 함수 선언문을 사용하는 것을 허용하지 않았으나 많은 브라우저들이 이를 구현했다(구현 명세도 서로 달랐다). 레거시와의 호환성을 위해 ES6부터 strict mode에서 블록 내부에 함수 선언문을 사용하는 것을 허용한다. 이때 선언된 함수는 블록 레벨 스코프를 가지며, 가장 가까운 블록의 최상단으로 호이스팅된다.
+
+```javascript
+{
+    function foo () { return 1 }
+    foo() === 1
+    {
+        function foo () { return 2 }
+        foo() === 2
+    }
+    foo() === 1
+}
+```
+
+자세한 것은 [ECMAScript 13.0 Block-level Function Declarations Web Legacy Compatibility Semantics](https://262.ecma-international.org/13.0/#sec-block-level-function-declarations-web-legacy-compatibility-semantics)를 참고한다.
+
+
+
 ## 함수 호이스팅이 변수 호이스팅보다 우선한다
 
 함수 선언과 변수 선언이 중복되면 함수 선언이 우선하여 중복 선언을 무시한다.
@@ -152,4 +172,10 @@ console.log(typeof foo);	// number
 - 모던 자바스크립트 Deep Dive 15장: `let`, `const` 키워드와 블록 레벨 스코프
 - You Don't Know JS Scope and Closures Chapter 4 Hoisting
 - [Variable and Function Hoisting in JavaScript](https://medium.com/@e.be.walk/variable-and-function-hoisting-in-javascript-e0c8ce1d31a5)
+- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/block#block_scoping_rules_with_var_or_function_declaration_in_non-strict_mode
+- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode
+- http://es6-features.org/#BlockScopedFunctions
+- https://262.ecma-international.org/13.0/#sec-block-level-function-declarations-web-legacy-compatibility-semantics
+
+
 
