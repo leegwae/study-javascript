@@ -44,7 +44,7 @@ function Champion(name) {
 
 #### 인스턴스 생성과 `this` 바인딩
 
-런타임 이전에 인스턴스의 생성과 `this` 바인딩이 실행된다.
+**런타임 이전에** 인스턴스의 생성과 `this` 바인딩이 실행된다.
 
 1. 인스턴스의 생성: 암묵적으로 빈 객체가 생성된다. 이 객체는 생성자 함수가 생성할 인스턴스이다.
 2. `this` 바인딩: 인스턴스는 생성자 함수 내부의 `this`에 바인딩된다.
@@ -109,7 +109,7 @@ console.log(new Bar());	// {a: 1}
 
 ## 생성자 함수 호출하기
 
-생성자 함수를 호출할 때에는 `new` 연산자를 함께 사용한다.
+함수 선언문, 함수 표현식, 클래스로 선언된 함수를 `new` 연산자와 함께 호출하면 생성자 함수로서 동작한다.
 
 ```js
 const lux = new Champion('luxanna');
@@ -126,24 +126,15 @@ console.log(unnamed);	// {name: undefined}
 
 ## 생성자 함수로 호출할 수 있는 함수
 
-함수 객체는 다음과 같이 구분할 수 있다.
-
-- callable이면서 constructor: 일반 함수 또는 생성자 함수로서 호출할 수 있는 객체
-- callable이면서 non-constructor: 일반 함수로서만 호출할 수 있는 객체
-
-즉, 모든 함수 객체는 callable하지만 모든 함수 객체를 생성자 함수로서 호출할 수는 없다.
-
-
+constructor인 함수만 생성자 함수로서 호출할 수 있다.
 
 ### 내부 메서드 `[[Call]]`과 `[[Construct]]`
 
-함수는 객체로서 내부 슬롯과 내부 메서드를 가지며, 추가적으로 `[[Environment]]`, `[[FormalParameters]]` 내부 슬롯과 `[[Call]]`, `[[Construct]]` 내부 메서드를 가진다.
-
-
+함수는 객체로서 일반 객체가 가지는 내부 슬롯과 내부 메서드를 가지며, 추가적으로 `[[Enviroment]]`, `[[FormalParameters]]` 내부 슬롯과 `[[Call]]` 내부 메서드 등을 가진다. 함수가 constructor라면 `[[Construct]]` 내부 메서드도 가진다.
 
 #### `[[Call]]`
 
-함수는 일반 함수로서 호출되면 내부 메서드 `[[Call]]`이 호출된다.
+함수가 일반 함수로서 호출되면 내부 메서드 `[[Call]]`이 호출된다.
 
 ```js
 function foo() {}
@@ -152,47 +143,35 @@ foo();	// 일반 함수로서 호출: [[Call]]이 호출된다.
 
 내부 메서드 `[[Call]]`을 갖는 함수 객체를 호출 가능(callable)하다고 한다. 호출할 수 있는 객체는 곧 함수이므로 모든 함수 객체는 반드시 호출 가능하다.
 
-
-
 #### `[[Construct]]`
 
-`new` 연산자와 함께 생성자 함수로서 호출되면 내부 메서드 `[[Construct]]`가 호출된다.
+함수가 `new` 연산자와 함께 생성자 함수로서 호출되면 내부 메서드 `[[Construct]]`가 호출된다.
 
 ```js
 function foo() {}
 new foo();	// 생성자 함수로서 호출: [[Construct]]이 호출된다.
 ```
 
-내부 메서드 `[[Construct]]`를 갖는 함수 객체를 constructor라고 하며, 갖지 않는 함수 객체를 non-constructor라고 한다. constructor 객체는 생성자 함수로서 호출할 수 있는 함수이며, non-constructor 객체는 생성자 함수로서 호출할 수 없는 함수이다.
-
-
+내부 메서드 `[[Construct]]`를 갖는 함수 객체를 constructor라고 한다. 모든 constructor는 함수이므로 `[[Call]]` 역시 가진다.
 
 ### constructor와 non-constructor의 구분
 
-자바스크립트 엔진은 함수 정의를 평가하여 함수를 constructor와 non-constructor로 구분한다.
+JavaScript 엔진은 함수 정의를 평가하여 함수를 constructor와 non-constructor로 구분한다.
 
-- **constructor**: 함수 선언문, 함수 표현식, 클래스로 정의된 함수
-- **non-constructor**: 메서드와 화살표 함수
+- constructor: 함수 선언문, 함수 표현식, 클래스로 정의한 함수. `[[Call]]`과 `[[Construct]]` 내부 메서드를 가진다.
+- non-consturctor: 메서드(ES6 메서드 축약 표현으로 정의한 프로퍼티), 화살표 함수. `[[Call]]` 내부 메서드만 가진다.
 
-이때 ECMAScript 사양에서 **메서드로 인정하는 함수는 오직 ES6의 메서드 축약 표현으로 정의된 함수**이다.
-
-
+constructor는 `[[Call]]`과 `[[Construct]]` 내부 메서드를 가지므로 일반 함수 또는 생성자 함수로서 호출할 수 있다. 그러나 non-constructor는 `[[Call]]` 내부 메서드만 가지므로 일반 함수로서만 호출할 수 있다.
 
 #### constructor
 
-함수 선언문, 함수 표현식, 클래스로 정의된 함수는 constructor이므로 `new` 연산자와 함께 생성자 함수로서 호출하면 내부 메서드 `[[Construct]]`가 호출된다.
+함수 선언문, 함수 표현식, 클래스로 정의된 함수는 constructor이다. 이들을 `new` 연산자와 함께 생성자 함수로서 호출하면 내부 메서드 `[[Construct]]`가 호출된다.
 
-- 함수 선언문
-
-````js
+```js
 /* 함수 선언문 */
 function foo() {}
 new foo();	// foo {}
-````
 
-- 함수 표현식
-
-```js
 /* 함수 표현식 */
 const bar = function () {}
 new bar();	// bar {}
@@ -204,13 +183,9 @@ const obj = {
 new obj.baz();	// baz {}
 ```
 
-
-
 #### non-constructor
 
 메서드(메서드 축약 표현으로 정의된 프로퍼티)와 화살표 함수는 non-constructor이므로 내부 메서드 `[[Construct]]` 생성자 함수로 호출할 수 없다.
-
-- 메서드: ES6의 메서드 축약 표현으로 정의된 프로퍼티
 
 ```js
 /* 메서드: ECMAScript가 메서드로 인정함 */
@@ -219,18 +194,12 @@ const obj = {
 };
 
 new obj.bar();	// TypeError: obj.bar is not a constructor
-```
 
-- 화살표 함수
-
-```js
 /* 화살표 함수 */
 const foo = () => {};
 
 new foo();	// TypeError: foo is not a constructor
 ```
-
-
 
 #### `prototype` 프로퍼티
 
@@ -241,7 +210,7 @@ constructor는 `prototype` 프로퍼티를 가지나 non-constructor는 `prototy
 (() => {}).hasOwnProperty('prototype');	// false
 ```
 
-`prototype` 프로퍼티는 생성자 함수가 생성할 인스턴스의 프로토타입 객체를 가리킨다. [Prototype and Inheritance.md](https://github.com/leegwae/study-javascript/blob/main/15.%20Prototype%20and%20Inheritance.md)를 참고한다.
+`prototype` 프로퍼티는 생성자 함수가 생성할 인스턴스의 프로토타입 객체를 가리킨다. [Prototype and Inheritance](https://github.com/leegwae/study-javascript/blob/main/15.%20Prototype%20and%20Inheritance.md)를 참고한다.
 
 
 
@@ -316,3 +285,9 @@ const str = String(123);
 console.log(str);	// 123
 ```
 
+
+
+## 참고
+
+- 모던 자바스크립트 Deep Dive - 17장 생상자 함수에 의한 객체 생성
+- https://262.ecma-international.org/13.0/#sec-object-internal-methods-and-internal-slots

@@ -1,7 +1,7 @@
 # this
 
 - 키워드 `this`는 객체 자신의 프로퍼티나 메서드를 참조하기 위한 자기 참조 변수(self-referencing variable)이다.
-- 따라서 `this`의 바인딩(`this`가 참조하는 값)은 함수를 호출하는 방식과 엄격 모드에 따라 달라진다.
+- 따라서 `this`의 바인딩(`this`가 참조하는 값)은 함수를 호출하는 방식과 엄격 모드인지에 따라 달라진다.
   - 런타임 바인딩(runtime binding): 함수가 어떻게 호출되었는지 그 방법에 따라 결정된다.
   - ES5 `Function.prototype.apply/call/bind` 메서드: 호출 방법에 관계없이 함수의 `this` 값 지정 가능
   - ES6 화살표 함수: `this`를 바인드하지 않는다.
@@ -53,6 +53,19 @@ console.log(obj === thisVal);	// true
 // 생성자 함수로서 호출
 const instance = new foo();	// foo {}
 ```
+
+일반 함수로서 호출할 때 `this`는 전역 객체를 가리키게 되므로 `this.프로퍼티`로 할당한 값은 전역 객체의 프로퍼티에 할당이 된다. 따라서 생성자로 정의한 함수가 일반 함수로 호출될 경우를 주의해야한다.
+
+```javascript
+function Foo(name) {
+    this.name = name;
+}
+
+Foo('Chromatics');
+console.log(name)	// Chromatics
+```
+
+
 
 
 
