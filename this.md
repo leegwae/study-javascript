@@ -1,10 +1,6 @@
 # this
 
-- 키워드 `this`는 객체 자신의 프로퍼티나 메서드를 참조하기 위한 자기 참조 변수(self-referencing variable)이다.
-- 따라서 `this`의 바인딩(`this`가 참조하는 값)은 함수를 호출하는 방식과 엄격 모드인지에 따라 달라진다.
-  - 런타임 바인딩(runtime binding): 함수가 어떻게 호출되었는지 그 방법에 따라 결정된다.
-  - ES5 `Function.prototype.apply/call/bind` 메서드: 호출 방법에 관계없이 함수의 `this` 값 지정 가능
-  - ES6 화살표 함수: `this`를 바인드하지 않는다.
+- 키워드 `this`는 객체 내부에서 객체 자신의 프로퍼티나 메서드를 참조하기 위한 자기 참조 변수(self-referencing variable)이다. 따라서 `this`에 담기는 값은 문맥에 따라 달라지며, 엄격 모드인지 아닌지에 따라 달라지기도 한다. 이처럼 동적으로 바인딩이 결정되는 것을 런타임 바인딩(runtime binding)이라고 한다.
 
 
 
@@ -102,14 +98,16 @@ foo();	// undefined
 ```js
 const obj = {
     foo() {
-        console.log(this === obj);	// true
+        console.log(this === obj);
         
         function bar() {
-            console.log(this === window);	// true
+            console.log(this === window);
         }
-        bar();
+        bar();	// true
     }
 }
+
+obj.foo();	// true
 ```
 
 - 콜백 함수도 일반 함수로 호출된다면 콜백 함수 내의 `this`는 전역 객체를 참조한다.
@@ -198,6 +196,22 @@ console.log(getName());	// ''
 
 `line 15`에서 `getName()`은 일반 함수를 호출하는 것이므로`this`는 전역 객체 `window`에 바인딩되고 `window.name`을 반환한다. 한편, 브라우저 환경에서 `window.name`은 브라우저 창의 이름을 나타내고 기본값은 `''`이다.
 
+```javascript
+function Champion(name) {
+    this.name = name;
+}
+
+Champion.prototype.name = 'prototype';
+Champion.prototype.getName = function () {
+    console.log(this.name);
+}
+
+const c = new Champion('lux');
+console.log(c.getName());	// lux
+```
+
+이러한 `this`의 특성을 사용한 것이 프로토타입 체인으로 상속받은 메서드를 호출하는 방식이다. `getName` 메서드를 소유한 것은 `Champion.prototype`이라는 객체이지만, 호출하는 것은 `c`이기 때문에 `'prototype'`이 아니라 `'lux'`가 출력되는 것이다.
+
 
 
 ### 생성자 함수로 호출
@@ -217,10 +231,12 @@ console.log(lux.name);	// lux
 
 ## 간접 호출하기
 
-`this` 값을 명시적으로 지정할 수 있다. 이때 자신의 프로토타입 체인에 속하지 않는 메서드를 간접적으로 호출하게 할 수도 있다.
+ES5의 `Function.prototype.apply/call/bind`를 사용하면 함수 내부에서 사용할 `this` 값을 명시적으로 지정할 수 있다. 즉, 자신의 프로토타입 체인에 속하지 않는 메서드를 간접적으로 호출할 수 있다.
 
-- `Function.prototype.apply/call`: 함수를 호출하며 함수 내부의 `this`를 지정한 값으로 사용
-- `Function.prototype.bind`: 함수 내부의 `this`의 값을 지정한 새로운 함수를 반환
+| 메서드                          | 설명                                                       |
+| ------------------------------- | ---------------------------------------------------------- |
+| `Function.prototype.apply/call` | 함수 내부의 `this`를 지정하고 함수를 호출한다.             |
+| `Function.prototype.bind`       | 함수 내부의 `this`가 지정한 값으로 고정된 함수를 반환한다. |
 
 
 
@@ -300,7 +316,7 @@ lux.foo(function () {
 
 rammus.foo(function () {
     console.log(this.val);
-});	// unkown
+});	// unknown
 ```
 
 
@@ -343,15 +359,14 @@ let func2 = obj.func;
 console.log(func2()() === window);		// true
 ```
 
-- 함수 B가 호출될 때, B의 `this`는 함수 A의 `this`로 고정된다.
+함수 B가 호출될 때, B의 `this`는 함수 A의 `this`로 고정된다.
+
+- `this`는 lexical이므로, `this`에 관한 엄격 모드의 규칙은 무시된다.
 
 ```js
 let foo = () => { 'use strict'; return this; }
 foo() === window;	// true
 ```
-
-- `this`는 lexical이므로, `this`에 관한 엄격 모드의 규칙은 무시된다.
-
 
 
 ## 참고
