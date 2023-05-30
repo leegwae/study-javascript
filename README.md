@@ -39,8 +39,11 @@
   - [Call by Sharing](https://github.com/leegwae/study-javascript/blob/main/Call%20by%20Sharing.md): 자바스크립트의 평가 전략
 - [15. Prototype and Inheritance](https://github.com/leegwae/study-javascript/blob/main/15.%20Prototype%20and%20Inheritance.md): 프로토타입 기반 언어 자바스크립트에서 상속은 어떻게 이루어지는가
 - [Keyword this](https://github.com/leegwae/study-javascript/blob/main/Keyword%20this.md): 키워드 this
+- Executable Code and Execution Contexts
+  - [Environment Records](https://github.com/leegwae/study-javascript/blob/main/Environment%20Records.md): 환경 레코드란 무엇인가
 - [Module](https://github.com/leegwae/study-javascript/blob/main/Module.md):  자바스크립트의 모듈 시스템
 - [Destructuring assignment](https://github.com/leegwae/study-javascript/blob/main/Destructuring%20assignment.md)
+- [Strict Mode](https://github.com/leegwae/study-javascript/blob/main/Strict%20Mode.md): 자바스크립트의 엄격 모드
 
 ***
 
@@ -56,9 +59,19 @@
   - [Promise](https://github.com/leegwae/study-javascript/blob/main/Promise.md): 비동기 연산을 위한 자바스크립트의 프로미스
   - [async and await](https://github.com/leegwae/study-javascript/blob/main/async%20and%20await.md): ES6의 async, await
 - [17. Iterator and Generator](https://github.com/leegwae/study-javascript/blob/main/17.%20Iterator%20and%20Generator.md)
-- [Strict Mode](https://github.com/leegwae/study-javascript/blob/main/Strict%20Mode.md): 자바스크립트의 엄격 모드
+
 - [13. Indexed collections](https://github.com/leegwae/study-javascript/blob/main/13.%20Indexed%20collections.md): 자바스크립트의 배열
 - [14. Keyed collections](https://github.com/leegwae/study-javascript/blob/main/14.%20Keyed%20collections.md): 자바스크립트의 맵과 집합
+
+
+
+## 참고
+
+- [모던 JavaScript 튜토리얼](https://ko.javascript.info/)
+- [MDN JavaScript](https://developer.mozilla.org/ko/docs/Web/JavaScript)
+- [ECMA-262, 12th edition](https://262.ecma-international.org/12.0/)
+- 모던 자바스크립트 Deep Dive(이용모 저)
+- [모던 자바스크립트 딥다이브 스터디](https://www.youtube.com/watch?v=3ZP3VPlrr0U&list=PLjQV3hketAJnP_ceUiPCc8GnNQ0REpCqr)
 
 
 
@@ -69,13 +82,9 @@
 - [ ] ECMA발표연도 -> ES*로 바꾸기
 - [ ] ECMA 연도별로 정리
 - [ ] 하이퍼링크가 md 파일이면 확장자 명시하기
-- [x] 함수와 객체 문서 서로 번호 바꾸기
 - [ ] Introduction.md
-  
-  - [x] 문서가 무엇에 관한 정보를 담고 있는지 정확하게 서술할 것
   - [ ] 브라우저 부분 02.JavaScript Runtime.md로 옮기기
 - [ ] **JavaScript Runtime.md**
-  
   - [x] ~~다른 문서로 편입하기~~ 문서 내용 새롭게 개편
   - [ ] 브라우저와 Node.js 런타임으로서의 기능 중심으로 보충하기
   - [ ] 자바스크립트 엔진
@@ -86,12 +95,8 @@
 - [ ] 06. Literals
   - [ ] 부동소수점 리터럴 정리하기
   - [ ] 정규표현식 문서 따로 파기(Regular Expression Literal.md)
-- [x] 07. Type Conversion
-  - [x] 객체 원시형 변환
-  - [x] `toString()`
 - [ ] 08. Operator
   - [ ] 8.5 비트 연산자 보충
-  - [x] 8.9 쉼표 연산자 보충
   - [ ] 8.10.3 `void` 연산자 보충
 - [ ] 12. Functions.md
   - [ ] [화살표 함수](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Functions/Arrow_functions#%EA%B3%A0%EA%B8%89_%EA%B5%AC%EB%AC%B8) 내용 보충하기
@@ -101,14 +106,11 @@
     - [ ] The generator function declaration(`function*`문)
     - [ ] The generator function expression(`function*`표현식)
     - [ ] The GeneratorFunction constructor(`GeneratorFunction` 생성자)
-  - [x] 클로저(closure) 분리하기
-  - [x] https://ko.javascript.info/closure
 - [ ] 11. Objects.md
-  - [x] 12.4 [getter, setter 정의하기](https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Working_with_Objects#getters_%EC%99%80_setters_%EC%A0%95%EC%9D%98) 보충
+  - [ ] hidden class (p.147 v8 엔진 동작 상세)
 - [ ] Objects.md: 모르는 메서드나 프로퍼티 볼 때마다 추가하기
   - [ ] 생성자 메서드
   - [ ] 프로토타입 메서드
-  - [ ] hidden class (p.147 v8 엔진 동작 상세)
 - [ ] 13. Indexed collections.md
   - [ ] [배열 메서드](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Indexed_collections#array_methods) 따로 문서 만들기
 - [ ] 14. Keyed collections.md
@@ -123,8 +125,6 @@
 - [ ] keyword this.md
   - [ ] 보충
 - [ ] Object initializer.md
-  - [x] 문서 내 링크 참고해서 작성
-  - [x] [shortand notation for method](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Object_initializer#%EB%A9%94%EC%84%9C%EB%93%9C_%EC%A0%95%EC%9D%98)
   - [ ] `...`와 `Object.assign()` 비교(얕은 복사, 깊은 복사56 관련하여)
     - [ ] [참조에 의한 객체 복사](https://ko.javascript.info/object-copy)
 - [ ] Stricit Mode.md
@@ -155,22 +155,11 @@
 - [ ] 콜백 문서 만들기
 - [ ] async and await.md
 - [ ] 자바스크립트의 예약어 정리
-- [x] call by sharing 다듬기
-  - [ ] ~~call by sharing과 call by value 합치기~~
-- [x] 객체 이니셜라이저의 객체 리터럴 내용 11. objects.md로 옮기기
-- [ ] Deep Dive 16장 객체 변경 방지
-- [ ] Deep Dive 14장 전역 변수의 문제점
-- [ ] Property Attribute
-
-  - [ ] 객체의 변경 방지하기
-
-
-
-
-## 참고
-
-- [모던 JavaScript 튜토리얼](https://ko.javascript.info/)
-- [MDN JavaScript](https://developer.mozilla.org/ko/docs/Web/JavaScript)
-- [ECMA-262](https://262.ecma-international.org/12.0/)
-- 모던 자바스크립트 Deep Dive(이용모 저)
-- [모던 자바스크립트 딥다이브 스터디](https://www.youtube.com/watch?v=3ZP3VPlrr0U&list=PLjQV3hketAJnP_ceUiPCc8GnNQ0REpCqr)
+- [ ] 코드 블록 js -> javascript
+- [ ] 참고 형식 통일하고 참고 없으면 참고 찾아서 넣기
+- [ ] [hiden class](https://v8.dev/blog/fast-properties)
+- [ ] https://medium.com/jspoint/how-javascript-works-in-browser-and-node-ab7d0d09ac2f
+- [ ] https://medium.com/jspoint
+- [ ] https://medium.com/sessionstack-blog/how-javascript-works/home
+- [ ] `Function` 생성자를 사용하지 않는 이유
+- [ ] [느슨한 비교](https://262.ecma-international.org/13.0/#sec-islooselyequal), [엄격한 비교](https://262.ecma-international.org/13.0/#sec-isstrictlyequal)
