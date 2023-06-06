@@ -10,4 +10,4 @@
 
 ## 참고
 
-- https://262.ecma-international.org/13.0/#agent
+- https://262.ecma-international.org/13.0/#sec-agents
