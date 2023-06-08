@@ -7,7 +7,7 @@
 
 실행 컨텍스트는 다음 세 가지의 컴포넌트를 가진다.
 
-1. `LexicalEnvironment` 컴포넌트: 식별자를 탐색할 때 사용하는 **환경 레코드(Environment Record)**에 대한 참조이다.
+1. `LexicalEnvironment` 컴포넌트: 식별자를 탐색할 때 사용하는 **환경 레코드(Environment Record)**에 대한 참조이다. 환경 레코드는 식별자 바인딩을 기록한다.
 2. `VariableEnvironment` 컴포넌트: 특별한 경우가 아니면 `LexicalEnvironment`와 같은 값을 가진다.
 3. `PrivateEnvironment` 컴포넌트: 클래스의 private name 바인딩을 기록한 PrivateEnvironment Record에 대한 참조이다.
 
@@ -180,6 +180,7 @@ console.log(x);	// 1
 2. 제어가 이동하면(현재 실행 중인 실행 컨텍스트에 대한 코드가 아니라 새로운 코드로 제어가 이동하면), 이 코드를 평가하고 새로운 실행 컨텍스트를 생성한다.
 3. 새로운 실행 컨텍스트를 실행 컨텍스트에 push한다. 기존의 실행 컨텍스트의 실행은 일시중지(suspend)된다.
 4. 현재 실행 중인 실행 컨텍스트의 실행이 종료되면 스택에서 pop한다.
+5. 에이전트는 일시중지되었던 실행 컨텍스트의 실행을 재개한다.
 
 ### 예시
 
@@ -301,7 +302,8 @@ globalEX = ExuectionContext {
 }
 ```
 
-
+- 함수 코드가 평가되어 생성된 실행 컨텍스트 객체의 `LexicalEnvironment`가 가리키는 환경 레코드 객체는 `FunctionEnvironmentRecord`이다.
+- 모듈 코드가 평가되어 생성된 실행 컨텍스트 객체의 `LexicalEnvironment`가 가리키는 환경 레코드 객체는 `ModuleEnvironmentRecord`이다.
 
 ### 추상화한 실행 컨텍스트 스택 예시
 
@@ -333,7 +335,7 @@ barEC = ExeuctionContext {
 		[[Functionobject]]: ref to bar,
 		
 		b: 20,
-		arguments: { 0: 20, length: 1, callee: bar}
+		arguments: { 0: 20, length: 1, callee: bar }
 		z: 4,
 	}
 }
@@ -370,6 +372,65 @@ globalEC = ExuectionContext {
 ```
 
 
+
+## 블록문은 어떻게 처리하는가?
+
+에이전트는 전역, 모듈, 함수, `eval` 코드에 대해서만 실행 컨텍스트를 생성한다. 한편 `let`, `const` 키워드로 선언한 변수는 블록 레벨 스코프를 따른다. 다음과 같은 코드에서 전역과 블록이 동일한 이름의 `const` 변수 `x`를 갖는다고 해보자.
+
+```javascript
+const x = 1;
+{
+	const x = 2;
+}
+```
+
+값이 1인 전역 `x`의 바인딩은 전역 코드가 평가되어 생성된 실행 컨텍스트의 렉시컬 환경에 기록된다. 블록문 안의 값이 2인 지역 `x`의 바인딩 역시 어딘가에 기록되어야하나, 기존의 전역 실행 컨텍스트의 렉시컬 환경에는 중복된 키가 존재한다.
+
+이러한 경우는 `[[OuterEnv]]` 필드가 기존의 환경 레코드인 선언적 환경 레코드를 생성하고, 실행 컨텍스트의 렉시컬 환경이 이 환경 레코드를 참조하도록 하여 처리한다. 블록문의 실행이 끝나면 `[[OuterEnv]]`가 참조하는 환경 레코드로 실행 컨텍스트의 렉시컬 환경을 되돌린다.
+
+예시로 보자면 다음과 같다.
+
+1. 전역 코드를 평가하여 전역 환경 레코드를 생성한다. 전역 실행 컨텍스트의 렉시컬 환경이 전역 환경 레코드를 참조한다.
+
+   ```
+   globalEnv = GlobalEnvironmentRecord {
+   	[[OuterEnv]]: null,
+   	[[GlobalThisValue]]: ref to window,
+   	[[ObjectRecord]]: ObjectEnvironmentRecord {
+   		[[BindingObject]]: ref to window,
+   	},
+   	[[DeclarativeRecord]]: DeclarativeEnvironmentRecord {
+   		x: 1,
+   	},
+   }
+   
+   globalEC = ExuectionContext {
+   	LexicalEnvironment: globalEnv
+   }
+   ```
+
+2. 블록문이 실행되면 전역 환경 레코드를 외부 환경으로 참조하는 선언적 환경 레코드를 생성한다. 전역 실행 컨텍스트의 렉시컬 환경은 선언적 환경 레코드를 참조한다.
+
+   ```
+   blockEnv = DeclarativeRecord {
+   	[[OuterEnv]]: globalEnv,
+   	x: 2
+   }
+   
+   globalEC = ExeuctionContext {
+   	LexicalEnvironment: blockEnv
+   }
+   ```
+
+3. 블록문의 실행이 끝나면 전역 실행 컨텍스트의 렉시컬 환경이 기존의 환경 레코드(선언적 환경 레코드의 외부 환경)를 참조하도록 되돌린다.
+
+   ```
+   globalEC = ExeuctionContext {
+   	LexicalEnvironment: globalEnv
+   }
+   ```
+
+   
 
 ## 참고
 
