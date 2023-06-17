@@ -128,32 +128,6 @@ console.log(unnamed);	// {name: undefined}
 
 constructor인 함수만 생성자 함수로서 호출할 수 있다.
 
-### 내부 메서드 `[[Call]]`과 `[[Construct]]`
-
-함수는 객체로서 일반 객체가 가지는 내부 슬롯과 내부 메서드를 가지며, 추가적으로 `[[Enviroment]]`, `[[FormalParameters]]` 내부 슬롯과 `[[Call]]` 내부 메서드 등을 가진다. 함수가 constructor라면 `[[Construct]]` 내부 메서드도 가진다.
-
-#### `[[Call]]`
-
-함수가 일반 함수로서 호출되면 내부 메서드 `[[Call]]`이 호출된다.
-
-```js
-function foo() {}
-foo();	// 일반 함수로서 호출: [[Call]]이 호출된다.
-```
-
-내부 메서드 `[[Call]]`을 갖는 함수 객체를 호출 가능(callable)하다고 한다. 호출할 수 있는 객체는 곧 함수이므로 모든 함수 객체는 반드시 호출 가능하다.
-
-#### `[[Construct]]`
-
-함수가 `new` 연산자와 함께 생성자 함수로서 호출되면 내부 메서드 `[[Construct]]`가 호출된다.
-
-```js
-function foo() {}
-new foo();	// 생성자 함수로서 호출: [[Construct]]이 호출된다.
-```
-
-내부 메서드 `[[Construct]]`를 갖는 함수 객체를 constructor라고 한다. 모든 constructor는 함수이므로 `[[Call]]` 역시 가진다.
-
 ### constructor와 non-constructor의 구분
 
 JavaScript 엔진은 함수 정의를 평가하여 함수를 constructor와 non-constructor로 구분한다.
