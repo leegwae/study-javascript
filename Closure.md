@@ -1,117 +1,153 @@
 # Closure
 
-- **클로저(closure)**는 함수와 이 함수를 둘러싼 상태(**렉시컬 환경**)의 조합이다. 달리 말하여, closure를 통해 inner function에서 outer function의 scope에 접근할 수 있다.
-- 자바스크립트에서 closure는 함수 생성 시간인, 함수가 생성되는 시간마다 만들어진다.
+> Closure is when a function is able to remember and access its lexical scope even when that function is executing outside its lexical scope. 클로저는 어떤 함수에 대하여, 함수가 그것의 렉시컬 스코프 바깥에서 실행될 때에도 그 렉시컬 스코프를 기억하고 그것에 접근할 수 있는 함수를 말한다.
+> You don't know JS - Scope and Closure Chapter 5. Scope Closure
 
-
-
-## 1. Lexical Scoping
-
-- *렉시컬 스코핑(lexical scoping)*은 함수가 중첩되었을 때 어떻게 파서가 변수 이름을 파싱할 것인지 기술한 것이다.
-  - 렉시컬 환경(lexcial environment)는 이를 설명하는 이론상의 객체이다.
-- *렉시컬(lexical)*은 렉시컬 스코핑이 소스 코드에 선언된 변수의 위치를 그 변수가 유효한 곳인지 결정하는데 사용한다는 것을 의미한다.
-
-
-
-## 2. Closure
-
-- **클로저(closures)**는 inner function이 어떤 식이로든 outer function 밖의 모든 scope에서 사용할 수 있으면 형성된다.
-  - inner function이 outer function 안에 정의된 모든 변수와 함수(그리고 outer function이 접근할 수 있는 모든 변수와 함수)에 접근할 수 있게 한다.
-  - inner function에 대한 일종의 캡슐화 제공: outer function은 inner function 안에 정의된 변수와 함수에 접근할 수 없다.
-  - 따라서 inner가 outer의 수명(life)보다 오래 살 경우, outer 안에 선언된 변수나 함수가 outer의 실행 시간보다 오래 산다.
-
-
-
-### 2.1 렉시컬 환경 자세히 보기
-
-- 자바스크립트에서 실행 중인 함수, 코드 블록, 스크립트 전체는 **렉시컬 환경(lexical environment)**라고 불리는 내부 숨김 연관 객체(interal hidden associated object)를 갖는다.
-  - 스크립트 전체와 관련한 렉시컬 환경은 전역 렉시컬 환경(gloal lexcial environment)라고 한다.
-- 렉시컬 환경 객체는 두 부분으로 구성된다.
-  - 환경 레코드(environment record): 모든 지역 변수를 프로퍼티로 저장하는 객체
-  - 외부 렉시컬 환경(outer lexical eviroment)에 대한 참조: 외부 코드와 관련
-- 즉, 변수는 `환경 레코드`의 프로퍼티임을 뜻하며, 변수에 접근하고 변경하는 것은 환경 레코드의 프로퍼티에 접근하고 변경함을 의미한다.
-
-
-
-#### 2.1.2 lexical environment의 변화 과정 보기
-
-https://ko.javascript.info/closure#ref-410
-
-
-
-- 자바스크립트의 모든 함수는 함수가 생성된 시점의 렉시컬 환경에 대한 참조를 `[[Environment]]`라는 숨김 프로퍼티에 저장한다.
-
-
-
-#### 2.1.1 lexical environment 형성 예시 보기
-
-```js
-const foo = (name)=> {
-    const getName = () => name;
+```javascript
+function foo() {
+    const x = 10;
     
-    return getName;
-};
-
-const bar = foo('umi');
-bar();		// 'umi'
-```
-
-- 자바스크립트는 함수의 중첩을 허용한다. 중첩된 함수는  클로저를 형성한다.
-- *closure*는 함수와 그 함수가 선언된 렉시컬 환경의 조합이다. 이 환경은 closure가 생성된 시점에 유효한 범위에 있는 모든 지역 변수로 구성된다.
-- 위 코드에서 변수 `name`를 유효하게 사용할 수 있는 이유
-  - `bar`는 `foo`가 실행되었을 때 생성된 함수 `getName`의 인스턴스를 참조한다.
-  - `getName`의 인스턴스는 그것의 렉시컬 환경에 대한 참조를 `[[Enviroment]]`에 유지하고, 이 환경에는 변수 `bar`가 생존해있다.
-  - 따라서 `foo`가 호출되었을 때 변수 `name`은 유효하게 사용할 수 있게 남아있다.
-
-```js
-function makeAdder(x) {
-    return function(y) {
-        return x + y;
-    };
-};
-
-let add5 = makeAdder(5);
-let add10 = makeAdder(10);
-
-console.log(add5(2));		// 7
-console.log(add5(2));		// 12
-
-console.log(makeAdder(5)(2));	// 7
-console.log(makeAdder(10)(2));	// 12
-```
-
-- `makeAdder`는 함수를 만들어 반환한다.
-  - 이 예시에서는 두 개의 함수 - 인수에 `5`를 더하는 `add5` 함수와 `10`을 더하는 `add10` 함수를 만들어낸다.
-- `add5`와 `add10`은 모두 클로저를 형성한다.
-- 둘은 동일한 함수 본문 정의를 공유하나, 서로 다른 렉시컬 환경를 저장한다.
-  - `add5`의 렉시컬 환경에서 `x`는 `5`이다.
-  - `add10`의 렉시컬 환경에서 `x`는 `10`이다.
-
-
-
-## 3. 이름 충돌
-
-- 이름 충돌(name conflict): outer에 정의한 변수와 inner에 정의한 변수의 이름이 같을 경우, inner function 안에서 전자에 접근할 수 있는 방법이 없다.
-- 스코프 체인(scope chain): 더 안쪽에 있는 범위가 우선순위를 가지고, 더 바깥쪽에 있는 범위가 가장 낮은 우선순위를 갖는다.
-
-```js
-const outer = () => {
-    let x = 1;
-    const inner = (x) => x;
+    function bar() {
+        console.log(x);
+    }
     
-    return inner;
+    return bar;
 }
 
-outer()(2);	// 1 대신 2 리턴
+const x = 1;
+const baz = foo();
+baz();	// 10
 ```
 
+`bar`는 `foo()` 반환값으로, `baz`에 담기게 되었다. 따라서 `baz()`는 `bar()`와 같다. `bar`가 호출되며 `bar` 함수 코드가 평가되고 `bar`에 대한 함수 실행 컨텍스트가 생성된다. 그런데 `bar`는 전역에서 호출되었으나, `bar`에 대한 실행 컨텍스트의 렉시컬 환경의 외부 렉시컬 환경 필드는 전역 실행 컨텍스트의 렉시컬 환경을 참조하지 않는다. `foo`에 대한 실행 컨텍스트의 렉시컬 환경을 참조한다.
 
+이처럼 함수는 자신이 정의된 환경(상위 스코프)을 기억하고 있다. 달리 말하여 함수의 상위 스코프는 함수 정의가 평가되어 함수 객체가 생성될 때 결정된다. 이것을 렉시컬 스코프라고 한다.
 
-## 4. 가비지 컬렉션
+## 함수 객체의 내부 슬롯 `[[Environment]]`
 
-https://ko.javascript.info/closure#ref-414
+함수 객체는 일반 객체에 대해 추가적으로 `[[Environment]]`라는 내부 슬롯을 가진다. `[[Environment]]`는 함수 선언문이 실행되어 함수 정의가 평가되고 그 결과 함수 객체가 생성된 환경, 곧 현재 실행 중인 실행 컨텍스트의 렉시컬 환경을 참조한다. 이후 함수 호출식이 실행되어 함수 내부 코드가 평가되고, 함수 실행 컨텍스트가 생성될 때 이 실행 컨텍스트의 렉시컬 환경은 함수 객체의 `[[Environment]]`를 참조하게 된다.
 
-https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Functions#efficiency_considerations
+```javascript
+function bar() {}
+bar()
+```
+
+위 코드의 실행을 따라가보자.
+
+1. `bar` 함수 선언문이 실행되어 `bar` 함수 정의가 평가된다. 그 결과 `bar` 함수 객체가 생성되었다. 이때 `bar` 함수 객체의 `[[Environment]]` 내부 슬롯은 `bar` 함수가 정의된 전역 실행 컨텍스트의 렉시컬 환경(현재 실행 중인 실행 컨텍스트의 렉시컬 환경)을 참조한다.
+2. `bar()` 함수 호출식이 실행되어 `bar` 함수 코드가 평가된다. 그 결과 `bar` 함수 실행 컨텍스트가 생성되었다. 이때 실행 컨텍스트의 렉시컬 환경의 `[[OuterEnv]]` 필드는 `bar` 함수 객체의 `[[Environment]]` 내부 슬롯이 참조하는 렉시컬 환경을 참조한다.
+
+## 클로저란 무엇인가
+
+> A closure is the combination of a function and the lexical environment within which that function was declared. 클로저는 함수와 이 함수가 선언된 렉시컬 환경의 조합이다. In other words, a closure gives you access to an outer function's scope from an inner function. 달리 말하여 클로저는 중첩 함수에서 외부 함수의 스코프에 접근할 수 있도록 한다.
+
+이에 따르면 클로저는 단순히 중첩 함수를 말하는 것이 아니다.
+
+```javascript
+function foo() {
+    const x = 10;
+    
+    function bar() {
+        console.log(x);
+    }
+    
+    return bar;
+}
+
+const bar = foo();
+bar();	// 10
+```
+
+라인 11에서 외부 함수 `foo`는 호출이 종료되었다. 즉 `foo`의 생명 주기가 종료되었으나 `foo` 내부의 지역 변수들 역시 생명 주기가 종료되어야 한다. 그러나 `foo`의 지역 변수 `x`에 접근할 수 있다. 이렇듯 상위 스코프를 기억하고 접근할 수 있는 함수를 클로저라고 한다. 한편 클로저에 의해 참조되는 상위 스코프의 변수를 **자유 변수(free variable)**라고 한다.
+
+실행 컨텍스트의 관점에서 살펴보자. `foo`에 대한 실행 컨텍스트는 실행 컨텍스트 스택에서 pop되었으나, 이 실행 컨텍스트의 렉시컬 환경은 `bar`에 대한 실행 컨텍스트의 렉시컬 환경의 외부 환경과 `bar` 함수 객체의 `[[Environment]]`에 의해 참조되고 있다. 참조되고 있으니 가비지 컬렉터에 의해 회수되지 않는다.
+
+### 모든 함수는 클로저인가?
+
+JavaScript의 모든 함수는 상위 스코프를 기억하고 있으므로 이론적으로는 클로저이다.
+
+1. 그러나 모던 브라우저는 중첩 함수가 외부 함수의 변수를 참조하지 않는 경우 상위 스코프를 기억하지 않도록 최적화하고 있다. (변수를 참조하는 경우, 해당 식별자만 기억하도록 최적화하기도 한다.)
+
+2. 중첩 함수가 외부 함수보다 오래 살아남지 않는 경우도 일반적으로 클로저라고 하지 않는다. 전역 변수를 참조하는 전역 함수도 마찬가지이다.
+
+   ```javascript
+   function foo() {
+       const x = 1;
+       function bar() {
+           console.log(x);
+       }
+       
+       bar();
+   }
+   foo();
+   ```
+
+그러니 클로저는 다음과 같이 정의하는 것이 정확하겠다.
+
+> **(1) 중첩 함수가 외부 함수보다 더 오래 유지되며 (2) 중첩 함수가 외부 함수의 변수를 참조하는 경우, 이 중첩 함수를 클로저**라고 한다.
+
+## 클로저 활용하기
+
+### 은닉하기
+
+```javascript
+const counter = (function () {
+    let count = 0;
+    
+    return function () {
+        return ++count;
+    }
+})();
+```
+
+상태를 변경하는 함수를 반환하는 즉시 실행 함수를 사용하여, 상태는 의도적으로 변경되지 않도록 은닉하고 변경 함수만 제공하도록 할 수 있다. 생성자 함수를 반환하는 예제로 바꿔보면 아래와 같다.
+
+```javascript
+const Counter = (function() {
+    let count = 0;
+    function Counter() {}
+    Counter.prototype.increase = function () {
+        return ++count;
+    }
+    return Counter
+})();
+
+const counter = new Counter();
+counter.increase();
+```
+
+그러나 생성자 함수를 반환해도 재사용할 수는 없다.
+
+```javascript
+const c1 = new Counter();
+console.log(counter.increase());	// 1
+const c2 = new Counter();
+console.log(counter.increase());	// 2
+```
+
+다음 예시로 확인해보자.
+
+```javascript
+const Champion = (function() {
+    let _name = 0;
+    function Champion(name) {
+        _count = name;
+    }
+    Champion.prototype.sayName = function () {
+        console.log(_count);
+    }
+    return Champion;
+})();
+
+const lux = new Champion('lux');
+lux.sayName();	// lux
+const azir = new Champion('azir');
+azir.sayName();	// azir
+
+lux.sayName();	// azir
+```
+
+즉시 실행 함수로 반환된 `Champion`은 `new` 생성자를 사용하여 인스턴스를 만들 수 있지만, `Champion` 함수 객체의 렉시컬 환경은 고정되어 있기 때문에 위와 같은 출력 결과가 나온다.
 
 
 
@@ -120,4 +156,4 @@ https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Functions#efficiency_
 - [MDN - Functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions#closures)
 - [MDN - Closure](https://developer.mozilla.org/ko/docs/Web/JavaScript/Closures)
 - [모던 자바스크립트 - closure](https://ko.javascript.info/closure)
-
+- You Don't Know JS Scope and Closure Chapter 5. Scope Closure

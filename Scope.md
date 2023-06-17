@@ -38,6 +38,8 @@ function foo() {
 
 함수를 중첩할 때 바깥에 있는 함수는 외부 함수, 내부에 있는 함수를 중첩 함수라고 한다. 이때 스코프는 계층 구조를 가지며, 이것을 **스코프 체인(scope chain)**이라고 한다. 자바스크립트 엔진은 변수를 참조할 때, 변수를 참조하는 코드의 스코프부터 스코프 체인을 통해 상위 스코프 방향으로 이동하며 선언된 변수를 검색한다. 자바스크립트 엔진은 식별자를 키로 가지는 자료구조인 렉시컬 환경(lexical environment)을 연결(체이닝; chaining)하여 스코프 체인을 생성한다.
 
+렉시컬 환경은 코드를 평가하여 생성되는 실행 컨텍스트(Execution Context)의 컴포넌트 중 하나이다. 렉시컬 환경과 실행 컨텍스트에 대해서는 [Execution Context](https://github.com/leegwae/study-javascript/blob/main/Execution%20Context.md)을 참고한다.
+
 ```js
 var x = 'global x';
 

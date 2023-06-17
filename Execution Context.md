@@ -3,6 +3,8 @@
 - 실행 컨텍스트(Exeuction Context)는 실행 가능한 코드를 평가하여 생성되며, 평가된 코드에 대한 스코프를 관리한다.
 - 실행 컨텍스트는 ECMAScript 명세에서 메커니즘을 설명하기 위해 사용되는 장치로, EMCAScript 구현체에 대응하지 않을 수 있다. ECMAScript 코드가 실행 컨텍스트에 직접적으로 접근하거나 조작하는 것은 불가능하다.
 
+
+
 ## 실행 컨텍스트의 구성
 
 실행 컨텍스트는 다음 세 가지의 컴포넌트를 가진다.
@@ -52,13 +54,24 @@ ECMAScript 코드는 네 가지 종류로 구분한다. 각 코드가 평가되�
 
 ### 함수 코드의 평가와 실행
 
+```
+'함수 코드의 평가'는 '함수 정의의 평가'를 의미하지 않는다.
+
+function foo() {}
+
+foo();
+
+와 같은 코드가 있다고 하자. 전역 코드를 실행하기 전 전역 코드의 선언문들이 호이스팅되어 실행된다. 이때 foo 함수 선언문도 호이스팅되어 평가되고 foo 함수 객체가 생성된다.
+'함수 코드가 평가되어 함수 실행 컨텍스트가 생성된다'는 것과 '함수 정의가 평가되어 함수 객체가 생성된다'는 것은 다르다는 뜻이다. 후자는 런타임 이전 호이스팅으로 인해 함수 선언문이 실행되고 선언문이 평가되어 함수 객체가 생성되는 것이다. 전자는 런타임 이후 함수 호출문이 실행되고 함수 내부 코드가 평가되어 함수 실행 컨텍스트가 생성되는 것이다.
+```
+
 **함수 코드(function code)**는 함수 내부에 존재하는 소스코드이다. 함수 내부에 중첩된 함수, 클래스의 내부 코드는 포함하지 않는다.
 
 1. 함수 코드 평가: 함수 코드를 평가하여 함수 실행 컨텍스트를 생성한다. 함수 실행 컨텍스트는 지역 스코프를 관리한다.
    1. 매개변수와 지역 변수 선언문을 실행한다. 매개변수와 지역 변수가 지역 스코프에 등록된다.
    2. `arguments` 객체를 생성한다. `arguments`는 지역 스코프에 등록된다.
    3. `this` 바인딩을 결정한다.
-   4. 스코프 체인에 지역 스코프를 연결한다.
+   4. 스코프 체인에 지역 스코프를 연결한다. (렉시컬 환경의 외부 환경 참조 값 할당)
 2. 함수 코드 실행
 
 ### `eval` 코드의 평가와 실행
@@ -330,7 +343,7 @@ window = {
 
 barEC = ExeuctionContext {
 	LexicalEnvironment: FunctionEnvironmentRecord {
-		[[OuterEnv]]: fooEC.[[LexicalEnvironment]],
+		[[OuterEnv]]: fooEC.LexicalEnvironment,
 		[[ThisValue]]: ref to window,
 		[[Functionobject]]: ref to bar,
 		
@@ -344,7 +357,7 @@ barEC = ExeuctionContext {
 
 fooEC = ExeuctionContext {
 	LexicalEnvironment: FunctionEnvironmentRecord {
-		[[OuterEnv]]: globalEC.[[LexicalEnvironment]],
+		[[OuterEnv]]: globalEC.LexicalEnvironment,
 		[[ThisValue]]: ref to window,
 		[[Functionobject]]: ref to foo,
 		
