@@ -34,8 +34,87 @@ bar()
 
 위 코드의 실행을 따라가보자.
 
-1. `bar` 함수 선언문이 실행되어 `bar` 함수 정의가 평가된다. 그 결과 `bar` 함수 객체가 생성되었다. 이때 `bar` 함수 객체의 `[[Environment]]` 내부 슬롯은 `bar` 함수가 정의된 전역 실행 컨텍스트의 렉시컬 환경(현재 실행 중인 실행 컨텍스트의 렉시컬 환경)을 참조한다.
-2. `bar()` 함수 호출식이 실행되어 `bar` 함수 코드가 평가된다. 그 결과 `bar` 함수 실행 컨텍스트가 생성되었다. 이때 실행 컨텍스트의 렉시컬 환경의 `[[OuterEnv]]` 필드는 `bar` 함수 객체의 `[[Environment]]` 내부 슬롯이 참조하는 렉시컬 환경을 참조한다.
+1. 전역 코드 평가와 실행: `bar` 함수 선언문이 실행되어 `bar` 함수 정의가 평가된다. 그 결과 `bar` 함수 객체가 생성되었다. 이때 `bar` 함수 객체의 `[[Environment]]` 내부 슬롯은 `bar` 함수가 정의된 전역 실행 컨텍스트의 렉시컬 환경(현재 실행 중인 실행 컨텍스트의 렉시컬 환경)을 참조한다.
+2. `bar` 함수 코드 평가와 실행: `bar()` 함수 호출식이 실행되어 `bar` 함수 코드가 평가된다. 그 결과 `bar` 함수 실행 컨텍스트가 생성되었다. 이때 실행 컨텍스트의 렉시컬 환경의 `[[OuterEnv]]` 필드는 `bar` 함수 객체의 `[[Environment]]` 내부 슬롯이 참조하는 렉시컬 환경을 참조한다.
+
+맨 처음에 나왔던 코드를 실행 컨텍스트 스택으로 살펴보자. 라인 12에서 `foo`를 호출하여 제어가 라인 7에 있을 때 실행 컨텍스트 스택의 상태는 아래와 같다.
+
+```
+window = {
+	foo: Function {
+		[[Environment]]: globalEX.LexicalEnvironment
+	}
+}
+
+|---------------------------------------------------------------| EC stack[1] <- top of EC stack
+
+fooEX = ExecutionContext {
+	LexicalEnvironment: FunctionEnvironmentRecord {
+		[[OuterEnv]]: globalEX.LexicalEnvironment,
+		[[ThisValue]]: ref to window,
+		[[FunctionObject]]: ref to foo,
+		
+		x: 10,
+		bar: Function {
+			[[Environment]]: fooEX.LexicalEnvironment
+		}
+	}
+}
+
+|---------------------------------------------------------------| EC stack[0]
+
+globalEX = ExeuctionContext {
+	LexicalEnvironment: GlobalEnvironmentRecord {
+		[[OuterEnv]]: null,
+		[[GlobalThisValue]]: ref to window,
+		[[ObjectRecord]]: ObjectEnvironmentRecord {
+			[[BindingObject]]: ref to window,
+		},
+		[[DeclarativeRecord]]: DeclarativeEnvironmentRecord {
+			x: 1,
+			baz: ref to bar
+		}
+	}
+}
+```
+
+라인 13에서 `bar`를 호출하여 제어가 라인 5에 있을 때 실행 컨텍스트 스택의 상태는 다음과 같다.
+
+```
+window = {
+	foo: Function {
+		[[Environment]]: globalEX.LexicalEnvironment
+	}
+}
+
+|---------------------------------------------------------------| EC stack[1] <- top of EC stack
+
+barEX = ExuectionContext {
+	LexicalEnvironment: FunctionEnvironmentRecord {
+		[[OuterEnv]]: fooEX.LexicalEnvironment,
+		[[ThisValue]]: ref window,
+		[[FunctionObject]]: ref to window,
+	}
+}
+
+|---------------------------------------------------------------| EC stack[0]
+
+globalEX = ExeuctionContext {
+	LexicalEnvironment: GlobalEnvironmentRecord {
+		[[OuterEnv]]: null,
+		[[GlobalThisValue]]: ref to window,
+		[[ObjectRecord]]: ObjectEnvironmentRecord {
+			[[BindingObject]]: ref to window,
+		},
+		[[DeclarativeRecord]]: DeclarativeEnvironmentRecord {
+			x: 1,
+			baz: ref to bar
+		}
+	}
+}
+```
+
+
 
 ## 클로저란 무엇인가
 
@@ -60,13 +139,13 @@ bar();	// 10
 
 라인 11에서 외부 함수 `foo`는 호출이 종료되었다. 즉 `foo`의 생명 주기가 종료되었으나 `foo` 내부의 지역 변수들 역시 생명 주기가 종료되어야 한다. 그러나 `foo`의 지역 변수 `x`에 접근할 수 있다. 이렇듯 상위 스코프를 기억하고 접근할 수 있는 함수를 클로저라고 한다. 한편 클로저에 의해 참조되는 상위 스코프의 변수를 **자유 변수(free variable)**라고 한다.
 
-실행 컨텍스트의 관점에서 살펴보자. `foo`에 대한 실행 컨텍스트는 실행 컨텍스트 스택에서 pop되었으나, 이 실행 컨텍스트의 렉시컬 환경은 `bar`에 대한 실행 컨텍스트의 렉시컬 환경의 외부 환경과 `bar` 함수 객체의 `[[Environment]]`에 의해 참조되고 있다. 참조되고 있으니 가비지 컬렉터에 의해 회수되지 않는다.
+실행 컨텍스트의 관점에서 살펴보자. `foo`에 대한 실행 컨텍스트는 실행 컨텍스트 스택에서 pop되었으나, 이 실행 컨텍스트의 렉시컬 환경은 `bar`에 대한 실행 컨텍스트의 렉시컬 환경의 외부 환경 필드와 `bar` 함수 객체의 `[[Environment]]` 내부 슬롯에 의해 참조되고 있다. 참조되고 있으니 가비지 컬렉터에 의해 회수되지 않는다.
 
 ### 모든 함수는 클로저인가?
 
 JavaScript의 모든 함수는 상위 스코프를 기억하고 있으므로 이론적으로는 클로저이다.
 
-1. 그러나 모던 브라우저는 중첩 함수가 외부 함수의 변수를 참조하지 않는 경우 상위 스코프를 기억하지 않도록 최적화하고 있다. (변수를 참조하는 경우, 해당 식별자만 기억하도록 최적화하기도 한다.)
+1. 그러나 모던 브라우저는 중첩 함수가 외부 함수의 변수를 참조하지 않는 경우 상위 스코프를 기억하지 않도록 최적화하고 있다. (변수를 참조하는 경우에는 해당 식별자만 기억하도록 최적화하기도 한다.)
 
 2. 중첩 함수가 외부 함수보다 오래 살아남지 않는 경우도 일반적으로 클로저라고 하지 않는다. 전역 변수를 참조하는 전역 함수도 마찬가지이다.
 
@@ -77,7 +156,7 @@ JavaScript의 모든 함수는 상위 스코프를 기억하고 있으므로 이
            console.log(x);
        }
        
-       bar();
+       bar();	// bar는 foo의 종료와 함께 생명주기가 끝난다.
    }
    foo();
    ```
