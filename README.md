@@ -32,7 +32,8 @@
 - [10. Loop and Iteration](https://github.com/leegwae/study-javascript/blob/main/10.%20Loop%20and%20Iteration.md): for/while statement와 jump statement
 - [11. Objects](https://github.com/leegwae/study-javascript/blob/main/11.%20Objects.md): 자바스크립트의 객체
   - [Object Initializer](https://github.com/leegwae/study-javascript/blob/main/Object%20Initializer.md): 객체 리터럴로 객체 생성하기
-  - [Constuctor Function](https://github.com/leegwae/study-javascript/blob/main/Constructor%20Function.md): 생성자 함수로 객체 생성하기
+  - [Constructor Function](https://github.com/leegwae/study-javascript/blob/main/Constructor%20Function.md): 생성자 함수로 객체 생성하기
+  - [Internal Slot and Internal Method](https://github.com/leegwae/study-javascript/blob/main/Internal%20Slot%20and%20Internal%20Method.md): 내부 슬롯과 내부 메서드
   - [Property Attributes](https://github.com/leegwae/study-javascript/blob/main/Property%20Attributes.md): 프로퍼티 어트리뷰트
   - [Standard Built-in Objects](https://github.com/leegwae/study-javascript/blob/main/Standard%20Built-in%20Objects.md): 표준 내장 객체
 - [12. Functions](https://github.com/leegwae/study-javascript/blob/main/12.%20Functions.md): 자바스크립트의 함수
@@ -41,8 +42,8 @@
 - [Keyword this](https://github.com/leegwae/study-javascript/blob/main/Keyword%20this.md): 키워드 this
 - Executable Code and Execution Contexts
   - [Environment Records](https://github.com/leegwae/study-javascript/blob/main/Environment%20Records.md): 환경 레코드란 무엇인가
-  - [Agent](https://github.com/leegwae/study-javascript/blob/main/Agent.md): 에이전트란 무엇인가
-  - [Exeuction Context](https://github.com/leegwae/study-javascript/blob/main/Execution%20Context.md): 실행 컨텍스트란 무엇인가
+  - [Execution Context](https://github.com/leegwae/study-javascript/blob/main/Execution%20Context.md): 실행 컨텍스트란 무엇인가
+- [Closure](https://github.com/leegwae/study-javascript/blob/main/Closure.md): 클로저
 - [Module](https://github.com/leegwae/study-javascript/blob/main/Module.md):  자바스크립트의 모듈 시스템
 - [Destructuring assignment](https://github.com/leegwae/study-javascript/blob/main/Destructuring%20assignment.md)
 - [Strict Mode](https://github.com/leegwae/study-javascript/blob/main/Strict%20Mode.md): 자바스크립트의 엄격 모드
@@ -54,7 +55,7 @@
 - [Symbol](https://github.com/leegwae/study-javascript/blob/main/Symbol.md): 자바스크립트의 Symbol 객체 명세
 - [Function](https://github.com/leegwae/study-javascript/blob/main/Function.md): Function 객체의 명세
 - [Arrow Function](https://github.com/leegwae/study-javascript/blob/main/Arrow%20Function.md): 화살표 함수
-- [Closure](https://github.com/leegwae/study-javascript/blob/main/Closure.md): 클로저
+- [Agent](https://github.com/leegwae/study-javascript/blob/main/Agent.md): 에이전트란 무엇인가
 - [16. Asynchronous JavaScript](https://github.com/leegwae/study-javascript/blob/main/16.%20Asynchronous%20JavaScript.md)
   - [Introducing Asynchrnous JavaScript](https://github.com/leegwae/study-javascript/blob/main/Introducing%20Asynchronous%20JavaScript.md): 일반적인 비동기 개념과 비동기를 위한 자바스크립트의 콜백과 프로미스 도입
   - [Timeouts and intervals](https://github.com/leegwae/study-javascript/blob/main/Timeouts%20and%20intervals.md)
@@ -109,6 +110,11 @@
     - [ ] The GeneratorFunction constructor(`GeneratorFunction` 생성자)
 - [ ] 11. Objects.md
   - [ ] hidden class (p.147 v8 엔진 동작 상세)
+  - [ ] 내부 슬롯과 내부 메서드 문서 분리하기
+    - [ ] 모든 객체가 가지고 있는 내부 슬롯
+    - [ ] 모든 객체가 가지고 있는 내부 메서드
+    - [ ] 함수 객체가 가지고 있는 내부 슬롯
+    - [ ] 함수 객체가 가지고 있는 내부 메서드
 - [ ] Objects.md: 모르는 메서드나 프로퍼티 볼 때마다 추가하기
   - [ ] 생성자 메서드
   - [ ] 프로토타입 메서드
@@ -164,3 +170,4 @@
 - [ ] https://medium.com/sessionstack-blog/how-javascript-works/home
 - [ ] `Function` 생성자를 사용하지 않는 이유
 - [ ] [느슨한 비교](https://262.ecma-international.org/13.0/#sec-islooselyequal), [엄격한 비교](https://262.ecma-international.org/13.0/#sec-isstrictlyequal)
+- [ ] 반복문 실행 때마다 실행 컨텍스트 생성됨
