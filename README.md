@@ -39,14 +39,15 @@
 - [12. Functions](https://github.com/leegwae/study-javascript/blob/main/12.%20Functions.md): 자바스크립트의 함수
   - [Call by Sharing](https://github.com/leegwae/study-javascript/blob/main/Call%20by%20Sharing.md): 자바스크립트의 평가 전략
 - [15. Prototype and Inheritance](https://github.com/leegwae/study-javascript/blob/main/15.%20Prototype%20and%20Inheritance.md): 프로토타입 기반 언어 자바스크립트에서 상속은 어떻게 이루어지는가
-- [Keyword this](https://github.com/leegwae/study-javascript/blob/main/Keyword%20this.md): 키워드 this
+- [this](https://github.com/leegwae/study-javascript/blob/main/this.md): 키워드 this
 - Executable Code and Execution Contexts
   - [Environment Records](https://github.com/leegwae/study-javascript/blob/main/Environment%20Records.md): 환경 레코드란 무엇인가
   - [Execution Context](https://github.com/leegwae/study-javascript/blob/main/Execution%20Context.md): 실행 컨텍스트란 무엇인가
 - [Closure](https://github.com/leegwae/study-javascript/blob/main/Closure.md): 클로저
-- [Module](https://github.com/leegwae/study-javascript/blob/main/Module.md):  자바스크립트의 모듈 시스템
 - [Destructuring assignment](https://github.com/leegwae/study-javascript/blob/main/Destructuring%20assignment.md)
 - [Strict Mode](https://github.com/leegwae/study-javascript/blob/main/Strict%20Mode.md): 자바스크립트의 엄격 모드
+- [Module](https://github.com/leegwae/study-javascript/blob/main/Module.md):  자바스크립트의 모듈 시스템
+- [Basics of Dependency Management](https://github.com/leegwae/study-javascript/blob/main/Basics%20of%20Dependency%20Management.md): 패키지 매니저 기초
 
 ***
 
