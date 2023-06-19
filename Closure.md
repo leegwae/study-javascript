@@ -93,7 +93,7 @@ barEX = ExuectionContext {
 	LexicalEnvironment: FunctionEnvironmentRecord {
 		[[OuterEnv]]: fooEX.LexicalEnvironment,
 		[[ThisValue]]: ref window,
-		[[FunctionObject]]: ref to window,
+		[[FunctionObject]]: ref to bar,
 	}
 }
 
