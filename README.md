@@ -44,9 +44,11 @@
   - [Environment Records](https://github.com/leegwae/study-javascript/blob/main/Environment%20Records.md): 환경 레코드란 무엇인가
   - [Execution Context](https://github.com/leegwae/study-javascript/blob/main/Execution%20Context.md): 실행 컨텍스트란 무엇인가
 - [Closure](https://github.com/leegwae/study-javascript/blob/main/Closure.md): 클로저
+- [Class](https://github.com/leegwae/study-javascript/blob/main/Class.md): 클래스
 - [Destructuring assignment](https://github.com/leegwae/study-javascript/blob/main/Destructuring%20assignment.md)
 - [Strict Mode](https://github.com/leegwae/study-javascript/blob/main/Strict%20Mode.md): 자바스크립트의 엄격 모드
 - [Module](https://github.com/leegwae/study-javascript/blob/main/Module.md):  자바스크립트의 모듈 시스템
+- [ECMAScript Module](https://github.com/leegwae/study-javascript/blob/main/ECMAScript%20Module.md): 네이티브 자바스크립트 모듈 시스템, ECMAScript Module
 - [Basics of Dependency Management](https://github.com/leegwae/study-javascript/blob/main/Basics%20of%20Dependency%20Management.md): 패키지 매니저 기초
 
 ***
