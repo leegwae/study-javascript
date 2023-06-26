@@ -485,8 +485,8 @@ Node.js는 다음을 기준으로 자바스크립트 파일을 CommonJS 혹은 E
 
 Node.js에서는 CommonJS가 ESM을 불러올 수 있고, ESM도 CommonJS를 불러올 수 있다. 단, CommonJS의 동기적 본질과 ESM의 비동기적 본질 때문에 몇 가지 제한이 있다. 
 
-- `import`문은 ESM이 CJS나 ESM을 불러올 때 사용할 수 있다.
-- `import()`식은 CommonJS나 ESM이 ESM을 불러올 때 사용할 수 있다.
+- `import`문은 ESM이 CJS나 ESM을 정적으로 불러올 때 사용할 수 있다.
+- `import()`식은 CommonJS나 ESM이 ESM을 동적으로 불러올 때 사용할 수 있다.
 - `require()`식은 CommonJS이 CommonJS를 불러올 때 사용할 수 있다. CJS는 top-level `await`를 지원하지 않으므로 CommonJS 로더를 사용하는 `require()`은 top-level `await`를 사용하는 ESM을 CJS로 변환할 수 없다.
 
 ### `import()`로 ESM 불러오기
