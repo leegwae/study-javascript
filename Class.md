@@ -217,7 +217,7 @@ class 클래스 {
 
 ### 클래스 메서드의 특징
 
-1. 메서드 축약 표현을 사용하여 정의한다.
+1. **메서드 축약 표현을 사용하여 정의**한다. (ES6에서 메서드로 인정하는 것은 메서드 축약 표현으로 정의된 함수이다.)
 2. 암묵적으로 strict mode로 실행된다.
 3. 열거할 수 없다.
 4. non-constructor이다.
@@ -346,3 +346,267 @@ class Champion {
     }
 }
 ```
+
+## 클래스의 인스턴스 생성 과정
+
+1. 인스턴스 생성과 `this` 바인딩: `new` 연산자로 클래스를 호출하면 빈 객체가 생성된다. 이 객체가 클래스의 인스턴스이다. 인스턴스의 프로토타입을 클래스의 `prototype` 프로퍼티가 가리키는 객체로 설정한다. `this`에 인스턴스를 바인딩한다.
+2. 인스턴스 초기화: `constructor` 내부 코드가 실행되며 `this`에 바인딩된 인스턴스를 초기화한다.
+3. 인스턴스 반환: `this`에 바인딩된 인스턴스를 암묵적으로 반환한다.
+
+## 클래스 확장
+
+클래스 확장(extends)은 기존의 클래스를 상속받아 새로운 클래스를 정의하는 것이다. (여기서의 상속은 인스턴스가 프로토타입 체인을 통해 프로퍼티를 사용하는 것과는 다르다. `정의`라는 개념에 집중하자.)
+
+### 의사 클래스 상속
+
+의사 클래스 상속(pseudo classical inheritance)은 클래스가 도입되기 전 클래스 확장을 흉내내기 위해 사용한 패턴이다.
+
+```javascript
+function Animal = (function() {
+    function Animal(name) {
+        this.name = name;
+    }
+    
+    Animal.prototype.eat = function() { return 'eat' };
+    
+    return Animal;
+})();
+
+function Bird = (function() {
+    function Bird() {
+        Animal.apply(this, arguments);
+    }
+    
+    Bird.prototype = Object.create(Animal.prototype);
+    Bird.prototype.constructor = Animal;
+    
+    Bird.prototype.move = function() { return 'move' };
+})();
+```
+
+### `extends` 키워드
+
+```javascript
+class 자식클래스 extends 부모클래스 {}
+```
+
+`extends`를 사용하여 단일 상속할 수 있다. `자식클래스`는 `부모클래스`의 public 프로토타입 메서드와 public 정적 메서드를 모두 상속받는다.
+
+- `자식클래스` 함수 객체의 프로토타입은 `부모클래스` 함수 객체이다.
+- `자식클래스` 함수 객체와 함께 생성된 프로토타입 객체의 프로토타입은 `부모클래스` 함수 객체와 함께 생성된 프로토타입 객체이다.
+- `자식클래스`로 생성한 인스턴스 객체의 프로토타입은 `자식클래스` 함수 객체와 함께 생성된 프로토타입 객체이다.
+
+```javascript
+class Animal {}
+class Bird extends Animal {}
+
+console.log(Bird.__proto__ === Animal);	// true
+console.log(Bird.prototype.__proto__ === Animal.prototype);	// true
+console.log(new Bird().__proto__ === Bird.prototype);	// true
+```
+
+### 동적 상속하기
+
+```javascript
+class 자식클래스 extends 표현식 {}
+```
+
+`extends` 키워드 다음에는 생성자 함수(`[[Construct]]` 내부 메서드를 갖는 함수 객체)로 평가될 수 있는 모든 표현식이 올 수 있다.
+
+```javascript
+class Foo {}
+class Bar {}
+
+class Baz extends (true ? Foo : Bar) {}
+```
+
+### 자식클래스의 `constructor`
+
+자식클래스에서 `constructor`를 생략하면 다음과 같은 `constructor`가 암묵적으로 정의된다.
+
+```javascript
+constructor(...args) {
+    super(...args);
+}
+```
+
+`super`에 대해서는 [super 키워드](#super-키워드)를 참고한다.
+
+### `super` 키워드
+
+`super` 키워드는 자식클래스에서 부모클래스의 메서드를 호출할 때 사용한다.
+
+#### 부모클래스의 `constructor` 호출하기
+
+`super()`로 호출하면 부모클래스의 `constructor`를 호출한다. 다음과 같은 제한을 가진다.
+
+1. 자식클래스에서 `constructor`를 생략하지 않는다면 반드시 `super()`를 호출해야한다.
+2. 이때 `this` 키워드는 `super()`를 호출하기 전까지 참조할 수 없다.
+3. 클래스를 상속받는 클래스에서만 `super`를 사용할 수 있다.
+
+```javascript
+class Foo {
+    constructor(a, b) {
+        this.a = a;
+        this.b = b;
+    }
+}
+
+class Bar extends Foo {
+    constructor(a, b, c) {
+        super(a, b);
+        this.c = c;
+    }
+}
+```
+
+#### 부모클래스의 프로토타입 메서드 호출하기
+
+자식클래스의 프로토타입 메서드 안에서 `super.메서드()`으로 호출하면 부모클래스의 프로토타입 메서드를 호출한다.
+
+```javascript
+class Parent {
+    constructor(name) {
+        this.name = name;
+    }
+    
+    hello() {
+        return this.name;
+    }
+}
+
+class Child extends Parent {
+    hello() {
+        return `${super.hello()}, hello!`;
+    }
+}
+
+console.log(new Child('World').hello());	// World, Hello!
+```
+
+#### 부모클래스의 정적 메서드 호출하기
+
+자식클래스의 정적 메서드 안에서 `super.메서드()`로 호출하면 부모클래스의 정적 메서드를 호출한다.
+
+```javascript
+class Parent {
+    static hello() {
+        return 'parent';
+    }
+}
+
+class Child extends Parent {
+    static hello() {
+        return `${super.hello()}, child`;
+    }
+}
+
+console.log(Child.hello());	// parent, child
+```
+
+
+
+#### 메서드의 `[[HomeObject]]` 내부 슬롯
+
+- `super` 참조를 가능하게 하기 위해 메서드는 `[[HomeObject]]` 내부 슬롯에 자신을 바인딩하고 있는 객체를 가리킨다. 아래의 경우 `Child.prototype.hello`의 `[[HomeObject]]`는 `Child.prototype`이며, `Child.prototype.__proto__`를 통해 `Parent.prototype`을 찾을 수 있다. 최종적으로 `super.hello`는 `Parent.prototype.hello`를 가리킨다.
+
+  ```javascript
+  class Parent {
+      constructor(name) {
+          this.name = name;
+      }
+      
+      hello() {
+          return this.name;
+      }
+  }
+  
+  class Child extends Parent {
+      hello() {
+          return `${super.hello()}, hello!`;
+      }
+  }
+  
+  console.log(new Child('World').hello());	// World, Hello!
+  ```
+
+- 메서드는 메서드 축약 표현으로 정의된 함수이므로, 클래스에 정의된 메서드뿐만 아니라 객체 리터럴에 정의된 메서드도 `[[HomeObject]]`를 가지며 `super`를 참조할 수 있다.
+
+  ```javascript
+  const foo = {
+      name: 'foo',
+      hello() { return this.name; },
+  };
+  
+  const bar = {
+      __proto__: foo,
+      hello() { return `${super.hello()}, hello!`; },
+  }
+  
+  console.log(bar.hello());	// foo, hello!
+  ```
+
+### 클래스의 `[[ConstructorKind]]` 내부 슬롯
+
+- 클래스의 `[[ConstructorKind]]` 내부 슬롯은 클래스가 다른 클래스를 상속받지 않거나 생성자 함수이면 `"base"`이다. 다른 클래스를 상속받는다면 `"derived"`이다.
+- 자바스크립트 엔진은 이 내부 슬롯을 통해 클래스가 `new` 연산자와 함께 호출되었을 때 동작을 달리한다. `"base"`이면 [클래스의 인스턴스 생성 과정](#클래스의-인스턴스-생성-과정)을 따르고 `"derived"`이면 [상속 클래스의 인스턴스 생성 과정](#상속-클래스의-인스턴스-생성-과정)을 따른다.
+
+### 상속 클래스의 인스턴스 생성 과정
+
+```javascript
+class Base {
+    constructor() {
+        console.log(this);
+        console.log(new.target);
+    }
+}
+class Derived extends Base {}
+```
+
+1. 서브클래스의 `constructor`에서 `super` 호출: `new` 연산자로 서브클래스를 호출하면, 서브클래스가 `super`를 호출하여 인스턴스 생성을 수퍼클래스에 위임한다.
+
+2. 수퍼클래스의 인스턴스 생성과 `this` 바인딩: 빈 객체가 생성된다. 이 객체가 클래스의 인스턴스이다. 인스턴스의 프로토타입을 서브클래스의 `prototype` 프로퍼티가 가리키는 객체로 설정한다. `this`에 인스턴스를 바인딩한다.
+
+   ```javascript
+   class Base {
+       constructor() {
+           console.log(this);	// Derived {}
+           console.log(new.target);	// Derived
+           console.log(Object.getPrototypeOf(this) === Derived.prototype);	// true
+           console.log(this instanceof Derived);	// true
+       }
+   }
+   ```
+
+   `new` 연산자와 함께 호출한 클래스는 서브클래스이므로 인스턴스의 타입이 서브클래스가 된다.
+
+3. 수퍼클래스의 인스턴스 초기화: 수퍼클래스의 `constructor` 내부 코드가 실행되며 `this`에 바인딩된 인스턴스를 초기화한다.
+
+4. 서브클래스의 `constructor`로 복귀와 `this` 바인딩: `super`가 반환한 인스턴스가 `this`에 바인딩된다. 즉, 서브클래스의 `constructor`가 아니라 수퍼클래스의 `constructor`가 객체를 생성하므로 서브클래스의 `constructor`는 반드시 `this`를 참조하기 전 `super`를 호출해야만 한다.
+
+5. 서브클래스의 인스턴스 초기화: 서브클래스의 `constructor` 내부 코드가 실행되며 `this`에 바인딩된 인스턴스를 초기화한다.
+
+6. 서브클래스의 인스턴스 반환: `this`에 바인딩된 인스턴스를 암묵적으로 반환한다.
+
+### 표준 빌트인 생성자 함수 확장
+
+표준 빌트인 생성자 함수를 부모클래스로 지정할 수도 있다.
+
+```javascript
+class MyArray extends Array {
+    even() {
+        return this.filter(e => e % 2 == 0);
+    }
+}
+
+const myArray = new MyArray(1, 2, 3, 4);
+console.log(myArray.even());	// MyArray(2) [2, 4]
+```
+
+이때 `this.filter`를 사용하면 프로토타입 체인에 의해 `Array.prototype.filter`를 사용하게 된다.
+
+
+
+## 참고
+
+- 모던 자바스크립트 Deep Dive 25장 클래스
