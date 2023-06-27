@@ -483,20 +483,32 @@ Node.js는 다음을 기준으로 자바스크립트 파일을 CommonJS 혹은 E
 
 ## Node.js에서 CommonJS와 ESM 상호 운용하기
 
-Node.js에서는 CommonJS가 ESM을 불러올 수 있고, ESM도 CommonJS를 불러올 수 있다. 단, CommonJS의 동기적 본질과 ESM의 비동기적 본질 때문에 몇 가지 제한이 있다. 
+Node.js에서는 CommonJS가 ESM을 불러올 수 있고, ESM도 CommonJS를 불러올 수 있다. 단, CommonJS의 동기적 본질과 ESM의 비동기적 본질 때문에 몇 가지 제한이 있다.
 
-- `import`문은 ESM이 CJS나 ESM을 정적으로 불러올 때 사용할 수 있다.
-- `import()`식은 CommonJS나 ESM이 ESM을 동적으로 불러올 때 사용할 수 있다.
-- `require()`식은 CommonJS이 CommonJS를 불러올 때 사용할 수 있다. CJS는 top-level `await`를 지원하지 않으므로 CommonJS 로더를 사용하는 `require()`은 top-level `await`를 사용하는 ESM을 CJS로 변환할 수 없다.
+- 정적 `import`문은 ESM이 ESM 혹은 CJS를 정적으로 불러올 때 사용할 수 있다.
+- 동적 `import()`식은 ESM이나 CJS가 ESM 혹은 CJS를 동적으로 불러올 때 사용할 수 있다.
+- `require()`식은 CJS가 CJS를 불러올 때 사용할 수 있다.
 
-### `import()`로 ESM 불러오기
+
+
+### `import`로 모듈 로딩하기
+
+`import`는 비동기적으로 모듈을 불러오는 ECMAScript 모듈 로더를 사용한다. ECMAScript 모듈 로더는 ESM와 CJS을 모두 불러올 수 있으며 `Module` 타입의 객체(ESM 네임스페이스 객체)로 변환하여 가져온다.
+
+- 어떻게 CJS를 ESM으로 변환하는가? 우선 모듈 지정자를 절대 경로로 변환하고 CommonJS 모듈 로더를 호출한다. 그 후 `module.exports` 객체를 `Module` 객체의 `default` 프로퍼티에 복사하여 ESM으로 변환한다.
+- CJS를 불러올 때 제한은 없는가? default export된 CJS를 named import할 수 없다. 이것은 CJS가 CJS를 불러올 때도 마찬가지이다. Node.js는 호환성을 위해 named export에 한해서만 정적 분석을 지원한다. [출처](https://nodejs.org/api/esm.html#commonjs-namespaces)
+- 정적 `import`문도 CJS에서 사용할 수 있는가? 없다. 정적 `import`문은 ESM에서만 사용할 수 있다. 그러나 동적 `import()`식은 CJS와 ESM 모두에서 사용 가능하다.
+
+### 동적 `import()`로 ESM 불러오기
 
 ```javascript
 // hello.mjs
 export const hello = 'hello';
 ```
 
-CommonJS는 동적 `import`를 사용하여 ESM을 불러올 수 있다. 단, CJS는 top-level `await`를 지원하지 않으므로 `async` 즉시 실행 함수로 감싸주어야한다.
+위와 같은 ESM을 동적 `import()`을 사용하여 불러오자.
+
+#### CJS에서 ESM 불러오기
 
 ```javascript
 // index.cjs
@@ -506,7 +518,9 @@ CommonJS는 동적 `import`를 사용하여 ESM을 불러올 수 있다. 단, CJ
 })();
 ```
 
-ESM도 동적 `import`를 사용하여 ESM을 불러올 수 있다. ESM은 ES2022부터 top-level `await`를 지원하고 있다.
+CommonJS는 동적 `import`를 사용하여 ESM을 불러올 수 있다. 단, CJS는 top-level `await`를 지원하지 않으므로 `async` 즉시 실행 함수로 감싸주어야한다.
+
+#### ESM에서 ESM 불러오기
 
 ```javascript
 // index.mjs
@@ -514,22 +528,9 @@ const { hello } = await import("./hello.mjs");
 console.log(hello);
 ```
 
-`require()`식으로 ESM을 불러오려고 시도하면 오류가 발생한다.
+ESM도 동적 `import`를 사용하여 ESM을 불러올 수 있다. ESM은 ES2022부터 top-level `await`를 지원하고 있다.
 
-```
-// index.cjs
-const { hello } = require("./hello.mjs");
-
-
-// Error [ERR_REQUIRE_ESM]: require() of ES Module 경로\hello.mjs not supported.
-// Instead change the require of 경로\hello.mjs to a dynamic import() which is available in all CommonJS modules.
-```
-
-CJS에서는 동적 `import()`로 ESM을 가져오라고 말하고 있다.
-
-### `import`문으로 CJS 불러오기
-
-ESM는 `import`문을 사용하여 CJS를 불러올 수 있다. 단, default export된 CJS를 named import할 수 없다.
+### 정적 `import`문으로 ESM에서 CJS 불러오기
 
 ```javascript
 // hello.cjs: default export
@@ -537,8 +538,19 @@ module.exports = {
 	hello: "hello",
 };
 
+// index.mjs: default import
+import m from "./hello.cjs";
+const { hello } = m;
+```
+
+ESM는 `import`문을 사용하여 CJS를 불러올 수 있다.
+
+- 단, default export된 CJS를 named import하면 다음과 같은 오류가 발생한다.
+
+```javascript
 // index.mjs: named import
 import { hello } from "./hello.cjs";
+//     ^^^^💥💥💥
 ```
 
 ```
@@ -550,14 +562,7 @@ import pkg from './hello.cjs';
 const { hello } = pkg;
 ```
 
-default export는 default import를 사용하라고 말하고 있다.
-
-```javascript
-import m from "./hello.cjs";
-const { hello } = m;
-```
-
-named export는 named import/default import할 수 있다.
+- named export된 CJS는 named import하거나 default import할 수 있다. Node.js가 호환성을 위해 default export와 달리 모든 named export를 정적 분석하여 named export할 수 있도록 지원하고 있기 때문이다.
 
 ```javascript
 // hello.cjs: named export
@@ -567,12 +572,7 @@ module.exports.hello = 'hello';
 import { hello } from "./hello.cjs";
 ```
 
-> For better compatibility with existing usage in the JS ecosystem, Node.js in addition attempts to determine the CommonJS named exports of every imported CommonJS module to provide them as separate ES module exports using a static analysis process.
-> https://nodejs.org/api/esm.html#commonjs-namespaces
-
-이것이 가능한 이유는, Node.js가 호환성을 위해 default export와 달리 모든 import export를 정적 분석하여 named export할 수 있도록 지원하고 있기 때문이다.
-
-한편 `module.exports`는 기본적으로 ESM 네임스페이스의 `default`에 복사된다.
+- `module.exports`는 기본적으로 ESM 네임스페이스의 `default`에 복사하여 CJS를 ESM으로 변환한다.
 
 ```javascript
 // hello.cjs
@@ -586,6 +586,22 @@ console.log(cjs); // Prints: { value: 'hello' }
 
 import * as m from "./hello.cjs";
 console.log(m); // Prints: [Module] { default: { value: 'hello' }, value: 'hello' }
+```
+
+### `require`로 모듈 로딩하기
+
+`require()`는 완전히 동기적으로 모듈을 불러오는 CommonJS 모듈 로더를 사용한다. CommonJS 모듈 로더는 ESM을 불러올 수 없으며, CJS만 불러올 수 있다. CJS 모듈은 top-level `await`를 지원하지 않으므로 top-level `await`를 지원하는 ESM 모듈을 CJS로 변환할 수 없기 때문이다.
+
+- `require()`을 ESM에서 사용할 수 있는가? 없다. `require`는 CJS에서만 사용할 수 있다.
+- `require()`로 ESM을 불러올 수 있는가? 없다. `require()`식으로 ESM을 불러오려고 시도하면 오류가 발생한다. CJS에서 ESM을 불러오려면 동적 `import()`를 사용하라고 명시하고 있다.
+
+```
+// index.cjs
+const { hello } = require("./hello.mjs");
+
+
+// Error [ERR_REQUIRE_ESM]: require() of ES Module 경로\hello.mjs not supported.
+// Instead change the require of 경로\hello.mjs to a dynamic import() which is available in all CommonJS modules.
 ```
 
 ## CommonJS와 ECMAScript Module 중 무엇을 사용할 것인가?
