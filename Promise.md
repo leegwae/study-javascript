@@ -169,10 +169,54 @@ Promise
 */
 ```
 
+## 프로미스와 에러 핸들링
+
+executor 내부에서 오류가 발생하거나 `throw`로 값을 던지면 해당 값을 `reject`한다. executor 주위에 암시적으로 `try...catch`문이 있어 에러를 잡고 `reject`처럼 다루는 것이다.
+
+```javascript
+new Promise(() => {
+    throw new Error('에러 발생!');
+}).catch(e => console.log(e));	// Error: 에러 발생!
+
+new Promise(() => {
+    throw 1;
+}).catch(reason => console.log(reason));	// 1
+```
+
+프로미스의 프로토타입 메서드 `then`, `catch`, `finally`는 인자로 받은 콜백이 반환하는 프로미스를 반환하거나 값을 반환한 경우 해당 값을 `resolve` 혹은 `reject`한 프로미스를 반환하므로, 에러를 다시 던져 다른 핸들러에서 처리하도록 할 수 있다.
+
+```javascript
+new Promise((_, reject) => {
+    reject('에러 발생!');
+}).catch(reason => {
+    if (error instanceof AuthError) handleAuthError();
+    else throw reason;
+}).catch(reason => {
+    if (error instanceof NotFoundError) handleNotFoundError();
+    else throw reason;
+}).catch(reason => handleError());
+```
+
+## `async`와 `await`
+
+ES8에 도입된 키워드 `async`와 `await`를 사용하면 동키 코드처럼 프로미스를 사용할 수 있다.
+
+```javascript
+async function get(url) {
+    const res = await fetch(url);
+    const data = await res.json();
+    
+    return res;
+}
+```
+
+`async`/`await`에 대해서는 [async와 await](https://github.com/leegwae/study-javascript/blob/main/async%20and%20await.md)를 참고한다.
+
 
 
 ##  참고
 
+- https://262.ecma-international.org/14.0/#sec-promise-objects
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/Promise
 - https://ko.javascript.info/promise-basics
 - 모던 자바스크립트 Deep Dive 45장 프로미스
