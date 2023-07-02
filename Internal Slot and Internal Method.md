@@ -18,7 +18,7 @@ TODO
 
 ### `[[Environment]]`
 
-함수 정의가 평가될 당시의 환경을 나타내는 환경 레코드를 값으로 가진다. 함수 정의가 평가될 때 외부 환경으로 사용된다.
+함수 정의가 평가될 당시의 환경을 나타내는 환경 레코드를 값으로 가진다. 함수 정의가 평가되어 실행된 함수 실행 컨텍스트의 렉시컬 환경의 외부 환경으로 사용된다. [실행 컨텍스트](https://github.com/leegwae/study-javascript/blob/main/Execution%20Context.md)와 [클로저](https://github.com/leegwae/study-javascript/blob/main/Closure.md)를 참고한다.
 
 
 
