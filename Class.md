@@ -217,7 +217,7 @@ class 클래스 {
 
 ### 클래스 메서드의 특징
 
-1. **메서드 축약 표현을 사용하여 정의**한다. (ECMAScript에서 메서드로 인정하는 것은 ES6의 메서드 축약 표현으로 정의된 함수이다.)
+1. **메서드 축약 표현을 사용하여 정의**한다.
 2. 암묵적으로 strict mode로 실행된다.
 3. 열거할 수 없다.
 4. non-constructor이다.
@@ -434,7 +434,7 @@ constructor(...args) {
 
 ### `super` 키워드
 
-`super` 키워드는 자식클래스에서 부모클래스의 메서드를 호출할 때 사용한다.
+`super` 키워드는 자식클래스의 메서드에서 부모클래스의 메서드를 호출할 때 사용한다. `super`는 메서드가 가진 `[[HomeObject]]` 내부 슬롯을 통해 사용할 수 있다. 메서드와 `[[HomeObject]]` 내부 슬롯에 대해서는 [12. Functions](https://github.com/leegwae/study-javascript/blob/main/12.%20Functions.md#메서드)를 참조한다.
 
 #### 부모클래스의 `constructor` 호출하기
 
@@ -503,48 +503,6 @@ class Child extends Parent {
 
 console.log(Child.hello());	// parent, child
 ```
-
-
-
-#### 메서드의 `[[HomeObject]]` 내부 슬롯
-
-- `super` 참조를 가능하게 하기 위해 메서드는 `[[HomeObject]]` 내부 슬롯에 자신을 바인딩하고 있는 객체를 가리킨다. 아래의 경우 `Child.prototype.hello`의 `[[HomeObject]]`는 `Child.prototype`이며, `Child.prototype.__proto__`를 통해 `Parent.prototype`을 찾을 수 있다. 최종적으로 `super.hello`는 `Parent.prototype.hello`를 가리킨다.
-
-  ```javascript
-  class Parent {
-      constructor(name) {
-          this.name = name;
-      }
-      
-      hello() {
-          return this.name;
-      }
-  }
-  
-  class Child extends Parent {
-      hello() {
-          return `${super.hello()}, hello!`;
-      }
-  }
-  
-  console.log(new Child('World').hello());	// World, Hello!
-  ```
-
-- 메서드는 메서드 축약 표현으로 정의된 함수이므로, 클래스에 정의된 메서드뿐만 아니라 객체 리터럴에 정의된 메서드도 `[[HomeObject]]`를 가지며 `super`를 참조할 수 있다.
-
-  ```javascript
-  const foo = {
-      name: 'foo',
-      hello() { return this.name; },
-  };
-  
-  const bar = {
-      __proto__: foo,
-      hello() { return `${super.hello()}, hello!`; },
-  }
-  
-  console.log(bar.hello());	// foo, hello!
-  ```
 
 ### 클래스의 `[[ConstructorKind]]` 내부 슬롯
 
