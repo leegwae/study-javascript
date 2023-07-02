@@ -38,6 +38,7 @@
   - [Standard Built-in Objects](https://github.com/leegwae/study-javascript/blob/main/Standard%20Built-in%20Objects.md): 표준 내장 객체
 - [12. Functions](https://github.com/leegwae/study-javascript/blob/main/12.%20Functions.md): 자바스크립트의 함수
   - [Call by Sharing](https://github.com/leegwae/study-javascript/blob/main/Call%20by%20Sharing.md): 자바스크립트의 평가 전략
+  - [Arrow Function](https://github.com/leegwae/study-javascript/blob/main/Arrow%20Function.md): 화살표 함수
 - [15. Prototype and Inheritance](https://github.com/leegwae/study-javascript/blob/main/15.%20Prototype%20and%20Inheritance.md): 프로토타입 기반 언어 자바스크립트에서 상속은 어떻게 이루어지는가
 - [16. Asynchronous JavaScript](https://github.com/leegwae/study-javascript/blob/main/16.%20Asynchronous%20JavaScript.md)
   - [Promise](https://github.com/leegwae/study-javascript/blob/main/Promise.md): 비동기 처리를 위한 자바스크립트의 프로미스 객체
@@ -60,7 +61,6 @@
 
 - [Symbol](https://github.com/leegwae/study-javascript/blob/main/Symbol.md): 자바스크립트의 Symbol 객체 명세
 - [Function](https://github.com/leegwae/study-javascript/blob/main/Function.md): Function 객체의 명세
-- [Arrow Function](https://github.com/leegwae/study-javascript/blob/main/Arrow%20Function.md): 화살표 함수
 - [Agent](https://github.com/leegwae/study-javascript/blob/main/Agent.md): 에이전트란 무엇인가
 - [Timeouts and intervals](https://github.com/leegwae/study-javascript/blob/main/Timeouts%20and%20intervals.md)
 - [17. Iterator and Generator](https://github.com/leegwae/study-javascript/blob/main/17.%20Iterator%20and%20Generator.md)
