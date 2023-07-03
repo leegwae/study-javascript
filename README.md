@@ -20,7 +20,9 @@
   - [Hoisting](https://github.com/leegwae/study-javascript/blob/main/Hoisting.md): 자바스크립트의 호이스팅
 - [04. Expression and Statement](https://github.com/leegwae/study-javascript/blob/main/04.%20Expression%20and%20Statement.md): 표현식과 문
 - [05. Data Types](https://github.com/leegwae/study-javascript/blob/main/05.%20Data%20Types.md): 동적 타이핑, 자바스크립트의 데이터 타입
+  - [Symbol](https://github.com/leegwae/study-javascript/blob/main/Symbol.md): 원시 데이터 타입 심볼이란 무엇인가
   - [Object](https://github.com/leegwae/study-javascript/blob/main/Object.md): Object 객체의 명세
+
 - [06. Literals](https://github.com/leegwae/study-javascript/blob/main/06.%20Literals.md): 리터럴의 종류
 - [07. Type Conversion](https://github.com/leegwae/study-javascript/blob/main/07.%20Type%20Conversion.md): 자바스크립트의 형 변환
   - 원시 값을 원시 값 혹은 객체로 변환하기
@@ -59,7 +61,6 @@
 
 문서 개편 필요
 
-- [Symbol](https://github.com/leegwae/study-javascript/blob/main/Symbol.md): 자바스크립트의 Symbol 객체 명세
 - [Function](https://github.com/leegwae/study-javascript/blob/main/Function.md): Function 객체의 명세
 - [Agent](https://github.com/leegwae/study-javascript/blob/main/Agent.md): 에이전트란 무엇인가
 - [Timeouts and intervals](https://github.com/leegwae/study-javascript/blob/main/Timeouts%20and%20intervals.md)
