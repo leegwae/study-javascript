@@ -11,7 +11,7 @@ new Promise();
 // 💥 Uncaught TypeError: Promise resolver undefined is not a function
 ```
 
-## exeuctor
+## 매개변수 `exeuctor`
 
 사용자는 프로미스의 인자 `executor`를 직접 정의하여 비동기 로직을 구현할 수 있다.
 
@@ -21,6 +21,7 @@ new Promise();
 
 - 비동기 처리가 성공한 경우 받고 싶은 값 `successValue`을 인자로 넘겨 `resolve`를 호출한다. 생성된 객체의 `[[PromiseState]]`는 `fulfilled`가 되고 `[[PromiseResult]]`는 `successValue`가 된다.
 - 비동기 처리가 실패한 경우 받고 싶은 값 `errorValue`를 인자로 넘겨 `reject`를 호출한다. 생성된 객체의 `[[PromiseState]]`는 `rejected`가 되고 `[[PromiseResult]]`는 `errorValue`가 된다.
+- `resolve`나 `reject`를 호출하지 않으면 프로미스는 영원히 `pending` 상태에 머무른다.
 
 ```javascript
 const get = url => new Promise((resolve, reject) => {
@@ -81,7 +82,7 @@ new Promise((_, reject) => reject(1)).then(undefined, (reason) => console.log(re
 new Promise(executor).catch(onRejected);
 ```
 
-`then(null, onRejected)`와 같다. 단, `then(onFulfilled, onRejected)`를 사용하면 `onRejected`는 `onFulfilled`를 처리할 수 없으므로 `catch`를 따로 두는 것이 좋다.
+`then(null, onRejected)`와 같다. 단, `then(onFulfilled, onRejected)`를 사용하면 `onRejected`는 `onFulfilled`에서 값을 던졌을 때 해당 오류를 처리할 수 없으므로 `catch`를 따로 두는 것이 좋다.
 
 ```javascript
 new Promise(executor).then(onFulfilled).catch(onRejected);
@@ -123,7 +124,7 @@ Promise.reject(reason);
 
 ```javascript
 new Promise((_, reject) => reject(1)).catch(v => console.log(v));	// 1
-Promise.resolve(1).catch(v => console.log(v));	// 1
+Promise.reject(1).catch(v => console.log(v));	// 1
 ```
 
 위 두 예제는 동일하게 동작한다.
