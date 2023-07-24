@@ -11,7 +11,7 @@ const timerId = setTimeout(func, delay, param1, param2, ...);
 `setTimeout`은 `delay`만큼 타이머를 설정하고, 타이머 만료 이후 `func`을 단 한 번 실행한다.
 
 - `func`: 타이머 만료 이후 호출될 콜백 함수. 문자열일 수 있다.
-- `delay`: 타이머 만료 시간이다. 단위는 `ms`이고 기본값은 `0`이다.
+- `delay`: 타이머 만료 시간이다. 단위는 `ms`이고 기본값은 `0`이다. 4ms 이하라면 최소 지연 시간으로 4ms로 지정된다.
 - `param1`: `func`에 전달할 인수이다.
 - 타이머를 식별할 수 있는 `timerId`를 반환한다. 브라우저의 경우 `number`이며 Node.js의 경우 타이머 객체이다.
 
@@ -30,7 +30,7 @@ const timerId = setInterval(func, delay, param1, param2, ...);
 `setInterval`은 `delay`마다 반복하는 타이머를 설정하고, 타이머 만료 이후 `func`을 실행한다.
 
 - `func`: 타이머 만료 이후 호출될 콜백 함수. 문자열일 수 있다.
-- `delay`: 타이머 만료 시간이다. 단위는 `ms`이고 기본값은 `0`이다.
+- `delay`: 타이머 만료 시간이다. 단위는 `ms`이고 기본값은 `0`이다. 4ms 이하라면 최소 지연 시간으로 4ms로 지정된다.
 - `param1`: `func`에 전달할 인수이다.
 - 타이머를 식별할 수 있는 `timerId`를 반환한다. 브라우저의 경우 `number`이며 Node.js의 경우 타이머 객체이다.
 
