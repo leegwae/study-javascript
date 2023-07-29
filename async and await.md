@@ -121,7 +121,7 @@ async function foo() {
 }
 ```
 
-`foo`가 반환한 `pending` 상태의 프로미스는 1초 후 `undefined`를 값으로 가진 `fulfilled` 상태의 프로미스나 `'caught'`를 값으로 가진 `fulfilled` 상태의 프로미스로 이행한다.
+`foo`가 반환한 `pending` 상태의 프로미스는 1초 후 `undefined`를 값으로 가진 `fulfilled` 상태의 프로미스나 `'caught'`를 값으로 가진 `rejected` 상태의 프로미스로 이행한다.
 
 1. 비동기 함수 `wait`를 `await`와 함께 호출하여 함수가 비동기 처리를 완료하는 것을 기다린다.
 2. `wait`가 `'성공'`을 값으로 가진 `fulfilled` 상태의 프로미스를 반환한다면, `await`문은 `'성공'`으로 평가된다. 오류는 발생하지 않았으므로 `try...catch`문을 벗어나고 반환문이 없으니 암묵적으로 `undefined`를 반환한다. 이때 `foo`는 `async`이므로 `'undefined'`을 resolve한 프로미스를 반환한다.
@@ -153,7 +153,7 @@ async function foo() {
 }
 ```
 
-`foo`가 반환한 `pending` 상태의 프로미스는 1초를 기다리고 `'성공'`을 값으로 가진 `fulfilled` 상태의 프로미스나 `'caught'`를 값으로 가진 `fulfilled` 상태의 프로미스로 이행한다.
+`foo`가 반환한 `pending` 상태의 프로미스는 1초를 기다리고 `'성공'`을 값으로 가진 `fulfilled` 상태의 프로미스나 `'caught'`를 값으로 가진 `rejected` 상태의 프로미스로 이행한다.
 
 1. 비동기 함수 `wait`를 `await`와 함께 호출하여 함수가 비동기 처리를 완료하는 것을 기다린다.
 2. `wait`가 `'성공'`을 값으로 가진 `fulfilled` 상태의 프로미스를 반환한다면, `await`문은 `'성공'`으로 평가된다. `return '성공'`문이 실행되는데, 이때 `foo`는 `async`이므로 `'성공'`을 resolve한 프로미스를 반환한다.
