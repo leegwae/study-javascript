@@ -102,7 +102,7 @@ async function foo() {
     try {
         wait();
     } catch (e) {
-        return 'caught';
+        return throw new Error('caught');
     }
 }
 ```
@@ -116,7 +116,7 @@ async function foo() {
     try {
         await wait();
     } catch (e) {
-        return 'caught';
+        return throw new Error('caught');
     }
 }
 ```
@@ -134,7 +134,7 @@ async function foo() {
     try {
         return wait();
     } catch (e) {
-        return 'caught';
+        return throw new Error('caught');
     }
 }
 ```
@@ -148,7 +148,7 @@ async function foo() {
     try {
         return await wait();
     } catch (e) {
-        return 'caught';
+        return throw new Error('caught');
     }
 }
 ```
@@ -167,7 +167,7 @@ async function foo() {
         const val = await wait();
         return val;
     } catch (e) {
-        return 'caught';
+        return throw new Error('caught');
     }
 }
 ```
