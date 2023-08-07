@@ -146,7 +146,7 @@ const generator = foo();
 // 1까지 실행
 console.log(generator.next());	// { value:1, done: false }
 // throw 실행!
-console.log(generator.throw('throw 실행!'));	// {value: undefined, done: false}
+console.log(generator.throw('throw 실행!'));	// {value: undefined, done: true }
 ```
 
 `Generator.prototype.throw`를 호출하면 메서드에 전달한 인자를 throw한 후, `value`가 해당 인자이며 `done`이 `true`인 이터레이터 리절트를 호출자에게 반환한다.
