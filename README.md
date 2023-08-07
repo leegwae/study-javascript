@@ -42,9 +42,11 @@
   - [Arrow Function](https://github.com/leegwae/study-javascript/blob/main/Arrow%20Function.md): 화살표 함수
 - [15. Prototype and Inheritance](https://github.com/leegwae/study-javascript/blob/main/15.%20Prototype%20and%20Inheritance.md): 프로토타입 기반 언어 자바스크립트에서 상속은 어떻게 이루어지는가
 - [16. Asynchronous JavaScript](https://github.com/leegwae/study-javascript/blob/main/16.%20Asynchronous%20JavaScript.md)
+  - [Ajax](https://github.com/leegwae/study-javascript/blob/main/Ajax.md): Ajax
   - [Timer](https://github.com/leegwae/study-javascript/blob/main/Timer.md):  호출 스케줄링을 위한 `setTimeout`과 `setInterval` 호스트 객체
   - [Promise](https://github.com/leegwae/study-javascript/blob/main/Promise.md): 비동기 처리를 위한 자바스크립트의 프로미스 객체
   - [async and await](https://github.com/leegwae/study-javascript/blob/main/async%20and%20await.md): ES6의 async, await
+
 - [this](https://github.com/leegwae/study-javascript/blob/main/this.md): 키워드 this
 - 실행가능한 코드의 평가와 실행
   - [Environment Record](https://github.com/leegwae/study-javascript/blob/main/Environment%20Record.md): 환경 레코드란 무엇인가
